@@ -26,6 +26,7 @@ public class MSBackendGateway {
 		userModule.usersModule(properties.getProperty("In1"),"Live");
 		extentReports.endTest(extentTest);
 		extentReports.flush();
+		System.out.println();
 	}
 	
 	@Test(enabled=false , priority = 2)
