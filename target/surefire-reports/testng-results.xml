@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="6" total="7" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="8847" started-at="2023-02-04T17:08:13 IST" finished-at="2023-02-04T17:08:21 IST">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="8847" started-at="2023-02-04T17:08:13 IST" finished-at="2023-02-04T17:08:21 IST">
+      <class name="org.testing.TestScripts.MSBackendGateway">
+        <test-method status="PASS" signature="users()[pri:1, instance:org.testing.TestScripts.MSBackendGateway@2286778]" name="users" duration-ms="8804" started-at="2023-02-04T17:08:13 IST" finished-at="2023-02-04T17:08:21 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- users -->
+      </class> <!-- org.testing.TestScripts.MSBackendGateway -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
