@@ -18,7 +18,7 @@ public class ApiValidation {
 			} else {
 				System.out.println(
 						"\nApi is working fine and " + "the Response Code is = " + response.statusCode() + "\n");
-				//System.out.println("And the response is given below :\n\n" + response.asPrettyString());
+				System.out.println("And the response is given below :\n\n" + response.asPrettyString());
 
 			}
 		} else if (response.statusCode() >= 300 & response.statusCode() < 400) {
