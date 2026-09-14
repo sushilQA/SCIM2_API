@@ -25,23 +25,41 @@ public class User_Login {
 
 	ApiValidation apiValidation = new ApiValidation();
 
-
 	public void userLogin(String URL) throws IOException, InterruptedException {
 
 		System.out.println("******************** User OAuth ********************\n");
+
+		ObjectMapper objectMapper = new ObjectMapper();
 		/*
-		 * ObjectMapper objectMapper = new ObjectMapper(); Map<String, Object> payload =
-		 * new HashMap<>(); payload.put("client_id", "sushiladmin");
-		 * payload.put("client_secret", "sushilAgr12#"); payload.put("scope", "scim");
-		 * 
-		 * String jsonPayload = objectMapper.writeValueAsString(payload);
-		 * 
-		 * Response response =
-		 * given().contentType(ContentType.JSON).body(jsonPayload).when() .post(URL +
-		 * "/api/oauth/token?grant_type=client_credentials");
-		 * 
-		 * System.out.println(response.body()); apiValidation.apiValidation(response);
+		 * Map<String, Object> payload = new HashMap<>(); 
+		 * payload.put("client_id","sushiladmin");
+		 * payload.put("client_secret", "sushilAgr12@");
+		 * payload.put("scope", "scim");
+		 * String jsonPayload = objectMapper.writeValueAsString(payload); 
+		 * Response response = given().log().all().contentType(ContentType.JSON).body(jsonPayload)
+		 * .when()
+		 * .post(URL + "/api/oauth/token?grant_type=client_credentials&username=sushiladmin&password=sushilAgr12@");
 		 */
+		Map<String, String> payload = new HashMap<>();
+		payload.put("client_id", "sushiladmin");
+		payload.put("client_secret", "sushilAgr12@");
+		payload.put("scope", "scim");
+		String jsonPayload = objectMapper.writeValueAsString(payload);
+
+		Response response = given()
+		        .log().all()
+		        .contentType(ContentType.JSON)
+		        .queryParam("grant_type", "password")
+		        .queryParam("username", "sushiladmin")
+		        .queryParam("password", "sushilAgr12@")
+		        .body(jsonPayload)
+		    .when()
+		        .post(URL + "/api/scim/oauth/token")
+		    .then()
+		       // .log().all()
+		        .extract().response();
+		System.out.println("RESPONSE AFTER API SUCCESS");
+		apiValidation.apiValidation(response);
 
 	}
 

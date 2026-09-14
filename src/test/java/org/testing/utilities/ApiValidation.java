@@ -10,17 +10,7 @@ public class ApiValidation {
 
 		if (response.statusCode() >= 200 & response.statusCode() < 300) {
 			JSONObject jsonObject = new JSONObject(response.asPrettyString());
-			int npfCode = Integer.parseInt(jsonObject.get("code").toString());
-			if (npfCode >= 1000 & npfCode <= 9000) {
-				System.out.println("\nSomthing went wrong !");
-				System.out.println("\nAnd the response is given below :\n" + response.asPrettyString());
-
-			} else {
-				System.out.println(
-						"\nApi is working fine and " + "the Response Code is = " + response.statusCode() + "\n");
-				System.out.println("And the response is given below :\n\n" + response.asPrettyString());
-
-			}
+			System.out.println("\nAnd the response is given below :\n" + response.asPrettyString());
 		} else if (response.statusCode() >= 300 & response.statusCode() < 400) {
 			System.out.println("Response Code is =" + response.statusCode());
 			JSONObject jsonObject = new JSONObject(response.asPrettyString());

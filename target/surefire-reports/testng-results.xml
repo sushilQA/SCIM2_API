@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="6" total="7" passed="1">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="8847" started-at="2023-02-04T17:08:13 IST" finished-at="2023-02-04T17:08:21 IST">
+  <suite started-at="2026-09-14T18:12:51 IST" name="Suite" finished-at="2026-09-14T18:12:56 IST" duration-ms="4839">
     <groups>
     </groups>
-    <test name="Test" duration-ms="8847" started-at="2023-02-04T17:08:13 IST" finished-at="2023-02-04T17:08:21 IST">
-      <class name="org.testing.TestScripts.MSBackendGateway">
-        <test-method status="PASS" signature="users()[pri:1, instance:org.testing.TestScripts.MSBackendGateway@2286778]" name="users" duration-ms="8804" started-at="2023-02-04T17:08:13 IST" finished-at="2023-02-04T17:08:21 IST">
+    <test started-at="2026-09-14T18:12:51 IST" name="Test" finished-at="2026-09-14T18:12:56 IST" duration-ms="4839">
+      <class name="org.testing.TestScripts.UserOAuth">
+        <test-method signature="users()[pri:1, instance:org.testing.TestScripts.UserOAuth@63475ace]" started-at="2026-09-14T18:12:51 IST" name="users" finished-at="2026-09-14T18:12:56 IST" duration-ms="4804" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- users -->
-      </class> <!-- org.testing.TestScripts.MSBackendGateway -->
+      </class> <!-- org.testing.TestScripts.UserOAuth -->
     </test> <!-- Test -->
   </suite> <!-- Suite -->
 </testng-results>

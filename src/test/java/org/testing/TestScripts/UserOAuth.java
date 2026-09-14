@@ -12,16 +12,17 @@ import com.relevantcodes.extentreports.ExtentTest;
 import jxl.read.biff.BiffException;
 
 public class UserOAuth {
-	
-	@Test(enabled=true , priority=1)
+
+	@Test(enabled = true, priority = 1)
 	public void users() throws IOException, BiffException, InterruptedException {
+
 		ExtentReports extentReports = GenerateExtentReports.generateExtentReport();
 		ExtentTest extentTest = extentReports.startTest("User OAuth");
 		User_Login login = new User_Login();
 		login.userLogin("https://humana-uat.alerthsc.com");
 		extentReports.endTest(extentTest);
 		extentReports.flush();
+
 	}
-	
-	
+
 }
