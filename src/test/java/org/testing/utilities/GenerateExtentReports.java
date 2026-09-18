@@ -6,7 +6,7 @@ public class GenerateExtentReports {
 	
 		public static ExtentReports generateExtentReport()
 		{
-			ExtentReports extentReports = new ExtentReports("../Npf_Backend_Gateway/test-output/MS_Backend_Gateway_Report.html", false);
+			ExtentReports extentReports = new ExtentReports("../SCIM2_API/test-output/SCIM2_API_Report.html", false);
 			return extentReports;
 		}
 

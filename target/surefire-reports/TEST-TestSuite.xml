@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestSuite" time="4.805" tests="1" errors="0" skipped="0" failures="0">
+<testsuite name="TestSuite" time="3.1" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="jansi.mode" value="force"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
@@ -28,7 +28,7 @@
     <property name="stderr.encoding" value="UTF-8"/>
     <property name="os.name" value="Windows 11"/>
     <property name="guice_custom_class_loading" value="CHILD"/>
-    <property name="classworlds.conf" value="C:\Users\sushil.k\eclipse-workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf7774974082781237397.tmp"/>
+    <property name="classworlds.conf" value="C:\Users\sushil.k\eclipse-workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf16849332114562441287.tmp"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
     <property name="stdout.encoding" value="UTF-8"/>
     <property name="java.library.path" value="C:\Program Files\OpenLogic\jdk-11.0.31.11-hotspot\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Users/sushil.k/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_25.0.4.v20260826-0822/jre/bin/server;C:/Users/sushil.k/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_25.0.4.v20260826-0822/jre/bin;C:\Program Files\OpenLogic\jdk-11.0.31.11-hotspot\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Users\sushil.k\AppData\Local\Microsoft\WindowsApps;;C:\WINDOWS\system32;;."/>
@@ -63,9 +63,9 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="java.vendor.version" value="OpenLogic-OpenJDK"/>
-    <property name="m2e.build.project.data.socket.port" value="58565"/>
+    <property name="m2e.build.project.data.socket.port" value="55776"/>
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase name="users" classname="org.testing.TestScripts.UserOAuth" time="4.805"/>
+  <testcase name="users" classname="org.testing.TestScripts.UserOAuth" time="3.1"/>
 </testsuite>

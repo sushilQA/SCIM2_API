@@ -1,8 +1,4 @@
 package org.testing.resources;
-
-import java.util.Arrays;
-import java.util.Base64;
-
 public class UserData {
 
 	private String userName;
