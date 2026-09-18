@@ -1,5 +1,6 @@
 package org.testing.utilities;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.microsoft.playwright.APIResponse;
@@ -11,6 +12,7 @@ public class ApiValidation {
 		int statusCode = response.status();
 		String body = response.text();
 		JSONObject jsonObject = null;
+		JSONArray messages = null;
 		try {
 			jsonObject = new JSONObject(body);
 		} catch (Exception e) {
@@ -20,7 +22,12 @@ public class ApiValidation {
 		if (statusCode >= 200 && statusCode < 300) {
 			System.out.println("Response is given below :\n" + body);
 
-		} else {
+		} else if (statusCode == 400) {
+			messages = jsonObject.getJSONArray("messages");
+			System.out.println(messages.getJSONObject(0).getString("messageDisplayText"));
+		}
+
+		else {
 			System.out.println("Response Code is =" + statusCode);
 			if (jsonObject != null && jsonObject.has("message")) {
 				System.out.println(jsonObject.get("message").toString());
