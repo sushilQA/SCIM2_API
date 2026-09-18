@@ -1,10 +1,12 @@
 org\testing\resources\UserData.class
 org\testing\utilities\GenerateExtentReports.class
+org\testing\TestSteps\Users.class
 org\testing\TestScripts\UserOAuth.class
+org\testing\utilities\AuthContext.class
+org\testing\TestScripts\GetAllUsers.class
 org\testing\utilities\BeforeRequest.class
 org\testing\utilities\ExcelDataRead.class
 org\testing\utilities\ApiValidation.class
 org\testing\utilities\ReadEndPoints.class
 org\testing\utilities\RandomNumberGenerator.class
-org\testing\TestSteps\User_Login.class
 org\testing\utilities\LoadPropertiesFile.class

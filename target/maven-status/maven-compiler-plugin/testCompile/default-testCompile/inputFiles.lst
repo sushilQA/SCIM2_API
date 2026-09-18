@@ -1,7 +1,9 @@
 C:\Users\sushil.k\eclipse-workspace\SCIM2_API\src\test\java\org\testing\resources\UserData.java
+C:\Users\sushil.k\eclipse-workspace\SCIM2_API\src\test\java\org\testing\TestScripts\GetAllUsers.java
 C:\Users\sushil.k\eclipse-workspace\SCIM2_API\src\test\java\org\testing\TestScripts\UserOAuth.java
-C:\Users\sushil.k\eclipse-workspace\SCIM2_API\src\test\java\org\testing\TestSteps\User_Login.java
+C:\Users\sushil.k\eclipse-workspace\SCIM2_API\src\test\java\org\testing\TestSteps\Users.java
 C:\Users\sushil.k\eclipse-workspace\SCIM2_API\src\test\java\org\testing\utilities\ApiValidation.java
+C:\Users\sushil.k\eclipse-workspace\SCIM2_API\src\test\java\org\testing\utilities\AuthContext.java
 C:\Users\sushil.k\eclipse-workspace\SCIM2_API\src\test\java\org\testing\utilities\BeforeRequest.java
 C:\Users\sushil.k\eclipse-workspace\SCIM2_API\src\test\java\org\testing\utilities\ExcelDataRead.java
 C:\Users\sushil.k\eclipse-workspace\SCIM2_API\src\test\java\org\testing\utilities\GenerateExtentReports.java

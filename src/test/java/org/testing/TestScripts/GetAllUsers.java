@@ -10,22 +10,24 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.microsoft.playwright.APIRequestContext;
 import com.microsoft.playwright.Playwright;
+
 import jxl.read.biff.BiffException;
 
-public class UserOAuth {
+public class GetAllUsers {
 
-	@Test(enabled = true, priority = 1)
+	@Test(enabled = true, priority = 2)
 	public void users() throws IOException, InterruptedException, BiffException {
 
 		ExtentReports extentReports = GenerateExtentReports.generateExtentReport();
-		ExtentTest extentTest = extentReports.createTest("User OAuth");
+		ExtentTest extentTest = extentReports.createTest("Get All Users");
 		Playwright playwright = Playwright.create();
 		APIRequestContext request = playwright.request().newContext();
-		Users login = new Users();
-		login.userLogin(request, ExcelDataRead.readACell(1,0), "password", ExcelDataRead.readACell(1, 1), ExcelDataRead.readACell(1, 2));
-		extentTest.log(Status.PASS, "User OAuth login executed successfully");
+		Users users = new Users();
+		users.getAllUsers(request, ExcelDataRead.readACell(1, 0), "10","10");
+		extentTest.log(Status.PASS, "Get All Users executed successfully");
 		request.dispose();
 		playwright.close();
+
 		extentReports.flush();
 	}
 

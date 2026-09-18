@@ -5,13 +5,15 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 public class GenerateExtentReports {
 
+	private static ExtentReports extentReports;
+
 	public static ExtentReports generateExtentReport() {
-		ExtentSparkReporter sparkReporter = new ExtentSparkReporter(
-				"../SCIM2_API/test-output/SCIM2_API_Report.html");
-
-		ExtentReports extentReports = new ExtentReports();
-		extentReports.attachReporter(sparkReporter);
-
+		if (extentReports == null) {
+			ExtentSparkReporter sparkReporter = new ExtentSparkReporter(
+					"../SCIM2_API/test-output/SCIM2_API_Report.html");
+			extentReports = new ExtentReports();
+			extentReports.attachReporter(sparkReporter);
+		}
 		return extentReports;
 	}
 

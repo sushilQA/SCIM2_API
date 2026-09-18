@@ -19,6 +19,7 @@ public class ApiValidation {
 
 		if (statusCode >= 200 && statusCode < 300) {
 			System.out.println("Response is given below :\n" + body);
+
 		} else {
 			System.out.println("Response Code is =" + statusCode);
 			if (jsonObject != null && jsonObject.has("message")) {
