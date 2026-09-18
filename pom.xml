@@ -20,7 +20,16 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>com.aventstack</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>5.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.microsoft.playwright</groupId>
+			<artifactId>playwright</artifactId>
+			<version>1.47.0</version>
+		</dependency>
 		<dependency>
 			<groupId>com.relevantcodes</groupId>
 			<artifactId>extentreports</artifactId>
@@ -87,7 +96,8 @@
 			<version>4.4.0</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator -->
+		<!--
+		https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator -->
 		<dependency>
 			<groupId>io.rest-assured</groupId>
 			<artifactId>json-schema-validator</artifactId>
@@ -117,7 +127,8 @@
 			<version>4.4.0</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator -->
+		<!--
+		https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator -->
 		<dependency>
 			<groupId>io.rest-assured</groupId>
 			<artifactId>json-schema-validator</artifactId>

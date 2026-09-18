@@ -2,35 +2,31 @@ package org.testing.utilities;
 
 import org.json.JSONObject;
 
-import io.restassured.response.Response;
+import com.microsoft.playwright.APIResponse;
 
 public class ApiValidation {
 
-	public void apiValidation(Response response) {
+	public void apiValidation(APIResponse response) {
 
-		if (response.statusCode() >= 200 & response.statusCode() < 300) {
-			JSONObject jsonObject = new JSONObject(response.asPrettyString());
-			System.out.println("\nAnd the response is given below :\n" + response.asPrettyString());
-		} else if (response.statusCode() >= 300 & response.statusCode() < 400) {
-			System.out.println("Response Code is =" + response.statusCode());
-			JSONObject jsonObject = new JSONObject(response.asPrettyString());
-			System.out.println(jsonObject.get("message").toString());
-			System.out.println("\nAnd the response is given below :\n" + response.asPrettyString());
-		} else if (response.statusCode() >= 400 & response.statusCode() < 500) {
-			System.out.println("Response Code is =" + response.statusCode());
-			JSONObject jsonObject = new JSONObject(response.asPrettyString());
-			System.out.println(jsonObject.get("message").toString());
-			System.out.println("\nAnd the response is given below :\n" + response.asPrettyString());
-		} else if (response.statusCode() >= 500 & response.statusCode() < 512) {
-			System.out.println("Response Code is =" + response.statusCode());
-			JSONObject jsonObject = new JSONObject(response.asPrettyString());
-			System.out.println(jsonObject.get("message").toString());
-			System.out.println("\nAnd the response is given below :\n" + response.asPrettyString());
+		int statusCode = response.status();
+		String body = response.text();
+		JSONObject jsonObject = null;
+		try {
+			jsonObject = new JSONObject(body);
+		} catch (Exception e) {
+			System.out.println("Response body is not valid JSON, skipping JSON parsing.");
+		}
+
+		if (statusCode >= 200 && statusCode < 300) {
+			System.out.println("Response is given below :\n" + body);
 		} else {
-			System.out.println("Response Code is =" + response.statusCode());
-			JSONObject jsonObject = new JSONObject(response.asPrettyString());
-			System.out.println(jsonObject.get("message").toString());
-			System.out.println("\nAnd the response is given below :\n" + response.asPrettyString());
+			System.out.println("Response Code is =" + statusCode);
+			if (jsonObject != null && jsonObject.has("message")) {
+				System.out.println(jsonObject.get("message").toString());
+			} else {
+				System.out.println("No 'message' field found in response body.");
+			}
+			System.out.println("\nAnd the response is given below :\n" + body);
 		}
 
 	}

@@ -1,28 +1,33 @@
 package org.testing.TestScripts;
 
 import java.io.IOException;
-import java.util.Properties;
 
 import org.testing.TestSteps.User_Login;
 import org.testing.utilities.GenerateExtentReports;
-import org.testing.utilities.LoadPropertiesFile;
 import org.testng.annotations.Test;
-import com.relevantcodes.extentreports.ExtentReports;
-import com.relevantcodes.extentreports.ExtentTest;
-import jxl.read.biff.BiffException;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.microsoft.playwright.APIRequestContext;
+import com.microsoft.playwright.Playwright;
 
 public class UserOAuth {
 
 	@Test(enabled = true, priority = 1)
-	public void users() throws IOException, BiffException, InterruptedException {
+	public void users() throws IOException, InterruptedException {
 
 		ExtentReports extentReports = GenerateExtentReports.generateExtentReport();
-		ExtentTest extentTest = extentReports.startTest("User OAuth");
-		User_Login login = new User_Login();
-		login.userLogin("https://humana-uat.alerthsc.com");
-		extentReports.endTest(extentTest);
-		extentReports.flush();
+		ExtentTest extentTest = extentReports.createTest("User OAuth");
+		Playwright playwright = Playwright.create();
+		APIRequestContext request = playwright.request().newContext();
 
+		User_Login login = new User_Login();
+		login.userLogin(request, "https://humana-uat.alerthsc.com");
+
+		request.dispose();
+		playwright.close();
+
+		extentReports.flush();
 	}
 
 }
