@@ -33,14 +33,14 @@ public class CreateUserSync {
 	@Test(enabled = true, priority = 10)
 	public void createUserSyncExpiredAccessToken() throws IOException, InterruptedException, BiffException {
 		ExtentReports extentReports = GenerateExtentReports.generateExtentReport();
-		ExtentTest extentTest = extentReports.createTest("Create User - Sync Failed - Invalid Or Expired Access Token");
+		ExtentTest extentTest = extentReports.createTest("Create User - Sync Failed - Expired/Invalid Access Token");
 		try {
 			createUserSync.createUserSyncFailedDueToInvalidOrExpiredAccessToken(RequestContext.request,
 					ConfigContext.properties.getProperty("humana_dev"));
-			extentTest.log(Status.PASS, "TC10 - Create User - Sync Failed - Invalid Or Expired Access Token");
+			extentTest.log(Status.PASS, "TC10 - Create User - Sync Failed - Expired/Invalid Access Token");
 		} catch (Exception e) {
 			extentTest.log(Status.FAIL,
-					"TC10 - Create User - Sync Failed - Invalid Or Expired Access Token failed: " + e.getMessage());
+					"TC10 - Create User - Sync Failed - Expired/Invalid Access Token failed: " + e.getMessage());
 			throw e;
 		}
 	}

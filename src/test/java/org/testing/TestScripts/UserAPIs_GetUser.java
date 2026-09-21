@@ -33,11 +33,11 @@ public class UserAPIs_GetUser {
 	@Test(enabled = true, priority = 5)
 	public void getAllUsers_ExpiredORInvalidAccessToken() throws IOException, InterruptedException, BiffException {
 		ExtentReports extentReports = GenerateExtentReports.generateExtentReport();
-		ExtentTest extentTest = extentReports.createTest("\nGet All Users with Expired OR Invalid Access Token");
+		ExtentTest extentTest = extentReports.createTest("\nGet All Users with Expired/Invalid Access Token");
 		try {
 			getUsers.getAllUsersWithExpiredORInvalidAccessToken(RequestContext.request,
 					ConfigContext.properties.getProperty("humana_dev"), "10", "10");
-			extentTest.log(Status.PASS, "TC5 - Get All Users with Expired OR Invalid Access Token Executed successfully");
+			extentTest.log(Status.PASS, "TC5 - Get All Users with Expired/Invalid Access Token Executed successfully");
 		} catch (Exception e) {
 			extentTest.log(Status.FAIL, "TC5 - Get All Users with Expired/Invalid Access Token failed: " + e.getMessage());
 			throw e;
@@ -64,7 +64,7 @@ public class UserAPIs_GetUser {
 		try {
 			getUsers.getSingleUserWithExpiredOrInvalidAccessToken(RequestContext.request,
 					ConfigContext.properties.getProperty("humana_dev"), "HMQALenel24");
-			extentTest.log(Status.PASS, "TC7 - Get Single User with Expired OR Invalid Access Token Executed Successfully");
+			extentTest.log(Status.PASS, "TC7 - Get Single User with Expired/Invalid Access Token Executed Successfully");
 		} catch (Exception e) {
 			extentTest.log(Status.FAIL, "TC7 - Get Single User with Expired/Invalid Access Token failed: " + e.getMessage());
 			throw e;

@@ -36,7 +36,7 @@ public class GetUsers {
 			String count) throws IOException, InterruptedException {
 
 		System.out.println(
-				"\n ******************** Get All Users with Invalid / Expired Access Token ********************\n");
+				"\n ******************** Get All Users with Invalid/Expired Access Token ********************\n");
 		try {
 			APIResponse response = request.get(URL + "/api/scim/v2/users",
 					RequestOptions.create().setQueryParam("startIndex", startIndex).setQueryParam("count", count)
@@ -74,7 +74,7 @@ public class GetUsers {
 			throws IOException, InterruptedException {
 
 		System.out.println(
-				"\n ******************** Get Single User With Expired Or Invalid Access Token ********************\n");
+				"\n ******************** Get Single User With Expired/Invalid Access Token ********************\n");
 		try {
 			APIResponse response = request.get(URL + "/api/scim/v2/users/" + userId,
 					RequestOptions.create().setHeader("Authorization", "Bearer " + AuthContext.expiredToken));

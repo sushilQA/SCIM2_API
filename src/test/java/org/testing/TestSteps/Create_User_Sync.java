@@ -47,7 +47,7 @@ public class Create_User_Sync {
 			throws IOException, InterruptedException {
 
 		System.out.println(
-				"\n ******************** Create User - Sync Failed - Invalid Or Expired Access Token ********************\n");
+				"\n ******************** Create User - Sync Failed - Invalid/Expired Access Token ********************\n");
 		try {
 			Map<String, String> tokens = new HashMap<>();
 			tokens.put("{{userName}}", "SCIM" + RandomNumberGenerator.randomNumber());
