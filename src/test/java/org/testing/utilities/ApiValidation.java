@@ -25,9 +25,9 @@ public class ApiValidation {
 		} else if (statusCode == 400) {
 			messages = jsonObject.getJSONArray("messages");
 			System.out.println(messages.getJSONObject(0).getString("messageDisplayText"));
-		}
-
-		else {
+		} else if (statusCode == 401) {
+			System.out.println("Invalid OR Expired Access Token");
+		} else {
 			System.out.println("Response Code is =" + statusCode);
 			if (jsonObject != null && jsonObject.has("message")) {
 				System.out.println(jsonObject.get("message").toString());

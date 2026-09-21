@@ -9,5 +9,4 @@ public class RandomNumberGenerator {
 		randomNumber = randomNumber+1;
 		return randomNumber.toString();
 	}
-
 }

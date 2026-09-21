@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestSuite" time="6.459" tests="3" errors="0" skipped="0" failures="0">
+<testsuite name="TestSuite" time="2.736" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="jansi.mode" value="force"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
@@ -28,7 +28,7 @@
     <property name="stderr.encoding" value="UTF-8"/>
     <property name="os.name" value="Windows 11"/>
     <property name="guice_custom_class_loading" value="CHILD"/>
-    <property name="classworlds.conf" value="C:\Users\sushil.k\eclipse-workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf9012115824078492423.tmp"/>
+    <property name="classworlds.conf" value="C:\Users\sushil.k\eclipse-workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf3233757336792465305.tmp"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
     <property name="stdout.encoding" value="UTF-8"/>
     <property name="java.library.path" value="C:\Program Files\OpenLogic\jdk-11.0.31.11-hotspot\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Users/sushil.k/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_25.0.4.v20260826-0822/jre/bin/server;C:/Users/sushil.k/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_25.0.4.v20260826-0822/jre/bin;C:\Program Files\OpenLogic\jdk-11.0.31.11-hotspot\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Users\sushil.k\AppData\Local\Microsoft\WindowsApps;;C:\WINDOWS\system32;;."/>
@@ -63,11 +63,13 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="java.vendor.version" value="OpenLogic-OpenJDK"/>
-    <property name="m2e.build.project.data.socket.port" value="59799"/>
+    <property name="m2e.build.project.data.socket.port" value="62891"/>
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase name="userOAuthWithInvalidUserName" classname="org.testing.TestScripts.UserOAuth" time="2.103"/>
-  <testcase name="userOAuthWithInvalidPassword" classname="org.testing.TestScripts.UserOAuth" time="2.083"/>
-  <testcase name="getAllUsers" classname="org.testing.TestScripts.GetUser" time="2.273"/>
+  <testcase name="generateAccessTokenWithValidCredentials" classname="org.testing.TestScripts.GenerateAccessToken" time="0.686"/>
+  <testcase name="generateAccessTokenWithInvalidUserName" classname="org.testing.TestScripts.GenerateAccessToken" time="0.394"/>
+  <testcase name="generateAccessTokenWithInvalidPassword" classname="org.testing.TestScripts.GenerateAccessToken" time="0.471"/>
+  <testcase name="getAllUsers" classname="org.testing.TestScripts.UserAPIs_GetUser" time="0.94"/>
+  <testcase name="getAllUsersWithExpiredToken" classname="org.testing.TestScripts.UserAPIs_GetUser" time="0.245"/>
 </testsuite>

@@ -3,9 +3,11 @@
 <suite name="Suite">
 	<test name="Test">
 		<classes>
-			<class name="org.testing.TestScripts.UserOAuth">
+			<class name="org.testing.Base.BaseClass">
 			</class>
-			<class name="org.testing.TestScripts.GetUser">
+			<class name="org.testing.TestScripts.GenerateAccessToken">
+			</class>
+			<class name="org.testing.TestScripts.UserAPIs_GetUser">
 			</class>
 		</classes>
 	</test> <!-- Test -->

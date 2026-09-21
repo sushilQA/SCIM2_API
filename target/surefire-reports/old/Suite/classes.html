@@ -4,18 +4,22 @@
 <th>Method name</th>
 <th>Groups</th>
 </tr><tr>
-<td>org.testing.TestScripts.UserOAuth</td>
+<td>org.testing.TestScripts.GenerateAccessToken</td>
 <td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@Test</td>
 </tr>
 <tr>
 <td>&nbsp;</td>
-<td>userOAuthWithInvalidUserName</td>
+<td>generateAccessTokenWithInvalidPassword</td>
 <td>&nbsp;</td></tr>
 <tr>
 <td>&nbsp;</td>
-<td>userOAuthWithInvalidPassword</td>
+<td>generateAccessTokenWithValidCredentials</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td>&nbsp;</td>
+<td>generateAccessTokenWithInvalidUserName</td>
 <td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@BeforeClass</td>
@@ -30,7 +34,7 @@
 <td align='center' colspan='3'>@AfterClass</td>
 </tr>
 <tr>
-<td>org.testing.TestScripts.GetUser</td>
+<td>org.testing.TestScripts.UserAPIs_GetUser</td>
 <td>&nbsp;</td><td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@Test</td>
@@ -38,6 +42,10 @@
 <tr>
 <td>&nbsp;</td>
 <td>getAllUsers</td>
+<td>&nbsp;</td></tr>
+<tr>
+<td>&nbsp;</td>
+<td>getAllUsersWithExpiredToken</td>
 <td>&nbsp;</td></tr>
 <tr>
 <td align='center' colspan='3'>@BeforeClass</td>
