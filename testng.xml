@@ -9,6 +9,8 @@
 			</class>
 			<class name="org.testing.TestScripts.UserAPIs_GetUser">
 			</class>
+			<class name="org.testing.TestScripts.CreateUserSync">
+			</class>
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

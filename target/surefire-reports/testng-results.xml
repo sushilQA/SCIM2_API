@@ -1,41 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
+<testng-results ignored="0" total="12" passed="12" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-09-21T15:25:26 IST" name="Suite" finished-at="2026-09-21T15:25:28 IST" duration-ms="2766">
+  <suite started-at="2026-09-21T18:29:08 IST" name="Suite" finished-at="2026-09-21T18:29:15 IST" duration-ms="6563">
     <groups>
     </groups>
-    <test started-at="2026-09-21T15:25:26 IST" name="Test" finished-at="2026-09-21T15:25:28 IST" duration-ms="2766">
+    <test started-at="2026-09-21T18:29:08 IST" name="Test" finished-at="2026-09-21T18:29:15 IST" duration-ms="6563">
       <class name="org.testing.TestScripts.GenerateAccessToken">
-        <test-method signature="generateAccessTokenWithValidCredentials()[pri:1, instance:org.testing.TestScripts.GenerateAccessToken@394a2528]" started-at="2026-09-21T15:25:26 IST" name="generateAccessTokenWithValidCredentials" finished-at="2026-09-21T15:25:26 IST" duration-ms="685" status="PASS">
+        <test-method signature="generateAccessTokenWithValidCredentials()[pri:1, instance:org.testing.TestScripts.GenerateAccessToken@1d8bd0de]" started-at="2026-09-21T18:29:08 IST" name="generateAccessTokenWithValidCredentials" finished-at="2026-09-21T18:29:09 IST" duration-ms="788" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- generateAccessTokenWithValidCredentials -->
-        <test-method signature="generateAccessTokenWithInvalidUserName()[pri:2, instance:org.testing.TestScripts.GenerateAccessToken@394a2528]" started-at="2026-09-21T15:25:26 IST" name="generateAccessTokenWithInvalidUserName" finished-at="2026-09-21T15:25:27 IST" duration-ms="395" status="PASS">
+        <test-method signature="generateAccessTokenWithInvalidUserName()[pri:2, instance:org.testing.TestScripts.GenerateAccessToken@1d8bd0de]" started-at="2026-09-21T18:29:09 IST" name="generateAccessTokenWithInvalidUserName" finished-at="2026-09-21T18:29:09 IST" duration-ms="337" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- generateAccessTokenWithInvalidUserName -->
-        <test-method signature="generateAccessTokenWithInvalidPassword()[pri:3, instance:org.testing.TestScripts.GenerateAccessToken@394a2528]" started-at="2026-09-21T15:25:27 IST" name="generateAccessTokenWithInvalidPassword" finished-at="2026-09-21T15:25:27 IST" duration-ms="470" status="PASS">
+        <test-method signature="generateAccessTokenWithInvalidPassword()[pri:3, instance:org.testing.TestScripts.GenerateAccessToken@1d8bd0de]" started-at="2026-09-21T18:29:09 IST" name="generateAccessTokenWithInvalidPassword" finished-at="2026-09-21T18:29:10 IST" duration-ms="509" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- generateAccessTokenWithInvalidPassword -->
       </class> <!-- org.testing.TestScripts.GenerateAccessToken -->
       <class name="org.testing.TestScripts.UserAPIs_GetUser">
-        <test-method signature="getAllUsers()[pri:4, instance:org.testing.TestScripts.UserAPIs_GetUser@7c1e2a9e]" started-at="2026-09-21T15:25:27 IST" name="getAllUsers" finished-at="2026-09-21T15:25:28 IST" duration-ms="939" status="PASS">
+        <test-method signature="getAllUsers()[pri:4, instance:org.testing.TestScripts.UserAPIs_GetUser@11c9af63]" started-at="2026-09-21T18:29:10 IST" name="getAllUsers" finished-at="2026-09-21T18:29:11 IST" duration-ms="932" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getAllUsers -->
-        <test-method signature="getAllUsersWithExpiredToken()[pri:5, instance:org.testing.TestScripts.UserAPIs_GetUser@7c1e2a9e]" started-at="2026-09-21T15:25:28 IST" name="getAllUsersWithExpiredToken" finished-at="2026-09-21T15:25:28 IST" duration-ms="246" status="PASS">
+        <test-method signature="getAllUsers_ExpiredORInvalidAccessToken()[pri:5, instance:org.testing.TestScripts.UserAPIs_GetUser@11c9af63]" started-at="2026-09-21T18:29:11 IST" name="getAllUsers_ExpiredORInvalidAccessToken" finished-at="2026-09-21T18:29:11 IST" duration-ms="248" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- getAllUsersWithExpiredToken -->
+        </test-method> <!-- getAllUsers_ExpiredORInvalidAccessToken -->
+        <test-method signature="getSingleUser()[pri:6, instance:org.testing.TestScripts.UserAPIs_GetUser@11c9af63]" started-at="2026-09-21T18:29:11 IST" name="getSingleUser" finished-at="2026-09-21T18:29:11 IST" duration-ms="391" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getSingleUser -->
+        <test-method signature="getSingleUser_ExpiredOrInvalidAccessToken()[pri:7, instance:org.testing.TestScripts.UserAPIs_GetUser@11c9af63]" started-at="2026-09-21T18:29:11 IST" name="getSingleUser_ExpiredOrInvalidAccessToken" finished-at="2026-09-21T18:29:12 IST" duration-ms="251" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getSingleUser_ExpiredOrInvalidAccessToken -->
+        <test-method signature="getSingleUserNotExist()[pri:8, instance:org.testing.TestScripts.UserAPIs_GetUser@11c9af63]" started-at="2026-09-21T18:29:12 IST" name="getSingleUserNotExist" finished-at="2026-09-21T18:29:12 IST" duration-ms="287" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getSingleUserNotExist -->
       </class> <!-- org.testing.TestScripts.UserAPIs_GetUser -->
+      <class name="org.testing.TestScripts.CreateUserSync">
+        <test-method signature="createUserSyncSuccess()[pri:9, instance:org.testing.TestScripts.CreateUserSync@36b4fe2a]" started-at="2026-09-21T18:29:12 IST" name="createUserSyncSuccess" finished-at="2026-09-21T18:29:13 IST" duration-ms="978" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createUserSyncSuccess -->
+        <test-method signature="createUserSyncExpiredAccessToken()[pri:10, instance:org.testing.TestScripts.CreateUserSync@36b4fe2a]" started-at="2026-09-21T18:29:13 IST" name="createUserSyncExpiredAccessToken" finished-at="2026-09-21T18:29:13 IST" duration-ms="251" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createUserSyncExpiredAccessToken -->
+        <test-method signature="createUserSyncUserAlreadyExist()[pri:11, instance:org.testing.TestScripts.CreateUserSync@36b4fe2a]" started-at="2026-09-21T18:29:13 IST" name="createUserSyncUserAlreadyExist" finished-at="2026-09-21T18:29:14 IST" duration-ms="1270" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createUserSyncUserAlreadyExist -->
+        <test-method signature="createUserSyncMissedId()[pri:12, instance:org.testing.TestScripts.CreateUserSync@36b4fe2a]" started-at="2026-09-21T18:29:14 IST" name="createUserSyncMissedId" finished-at="2026-09-21T18:29:15 IST" duration-ms="283" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createUserSyncMissedId -->
+      </class> <!-- org.testing.TestScripts.CreateUserSync -->
       <class name="org.testing.Base.BaseClass">
-        <test-method is-config="true" signature="generateAccessTokenWithValidCredentials()[pri:0, instance:org.testing.Base.BaseClass@d21a74c]" started-at="2026-09-21T15:25:17 IST" name="generateAccessTokenWithValidCredentials" finished-at="2026-09-21T15:25:26 IST" duration-ms="8468" status="PASS">
+        <test-method is-config="true" signature="generateAccessTokenWithValidCredentials()[pri:0, instance:org.testing.Base.BaseClass@fa36558]" started-at="2026-09-21T18:29:00 IST" name="generateAccessTokenWithValidCredentials" finished-at="2026-09-21T18:29:08 IST" duration-ms="8342" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- generateAccessTokenWithValidCredentials -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:org.testing.Base.BaseClass@d21a74c]" started-at="2026-09-21T15:25:29 IST" name="tearDown" finished-at="2026-09-21T15:25:29 IST" duration-ms="268" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:org.testing.Base.BaseClass@fa36558]" started-at="2026-09-21T18:29:15 IST" name="tearDown" finished-at="2026-09-21T18:29:15 IST" duration-ms="675" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

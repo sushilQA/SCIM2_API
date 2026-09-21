@@ -1,0 +1,54 @@
+{
+    "addresses": {
+        "postalCode": "37027",
+        "locality": "Brentwood"
+    },
+    "active": true,
+    "validFrom": "02/03/2026",
+    "title": "AT00063126",
+    "userName": "{{userName}}",
+    "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
+        "manager": {
+            "displayName": "sushil100 agrawal100",
+            "value": "AT00063126"
+        },
+        "employeeNumber": "{{userName}}"
+    },
+    "emails": [
+        {
+            "type": "work",
+            "value": "{{userName}}@alertenterprise.com",
+            "primary": true
+        }
+    ],
+    "name": {
+        "familyName": "{{userName}}LastName",
+        "givenName": "{{userName}}FirstName",
+        "middleName": "{{userName}}MiddleName"
+    },
+    "id": "{{userName}}",
+    "userType": "Employee",
+    "urn:aehsc:scim:api:extension:2.0:UserExtension": {
+        "customProperties": {
+            "supervisorNumber": "AT00063126",
+            "futurePositionId": "P1423363",
+            "companyHierarchy": "HIC Settlement",
+            "locationCode": "023",
+            "futureSupervisorNumber": "687087",
+            "badgeId": "",
+            "jobFamilyGroup": "Member Quality & Financials - Utilization Management",
+            "companyNumber": "004",
+            "futureCompanyNumber": "004",
+            "badgePickupPreference": "Shipping to Personal location",
+            "workStyle": "Office",
+            "scim_state": "Tennessee",
+            "jobFamily": "Utilization Management Nursing",
+            "personalemail": "HMQALenel24_personal@yopmail.com",
+            "scim_department": "50371",
+            "currentPositionId": "P1423363",
+            "futureterminationdate": "12/31/9999"
+        },
+        "validFrom": "02/03/2026",
+        "employmentStatus": "Active"
+    }
+}

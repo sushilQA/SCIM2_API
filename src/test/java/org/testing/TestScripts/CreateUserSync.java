@@ -1,0 +1,78 @@
+package org.testing.TestScripts;
+
+import java.io.IOException;
+
+import org.testing.TestSteps.Create_User_Sync;
+import org.testing.utilities.ConfigContext;
+import org.testing.utilities.GenerateExtentReports;
+import org.testing.utilities.RequestContext;
+import org.testng.annotations.Test;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import jxl.read.biff.BiffException;
+
+public class CreateUserSync {
+
+	Create_User_Sync createUserSync = new Create_User_Sync();
+
+	@Test(enabled = true, priority = 9)
+	public void createUserSyncSuccess() throws IOException, InterruptedException, BiffException {
+		ExtentReports extentReports = GenerateExtentReports.generateExtentReport();
+		ExtentTest extentTest = extentReports.createTest("Create User Sync");
+		try {
+			createUserSync.createUserSyncSuccess(RequestContext.request,
+					ConfigContext.properties.getProperty("humana_dev"));
+			extentTest.log(Status.PASS, "TC9 - Create User Sync");
+		} catch (Exception e) {
+			extentTest.log(Status.FAIL, "TC9 - Create User Sync failed: " + e.getMessage());
+			throw e;
+		}
+	}
+
+	@Test(enabled = true, priority = 10)
+	public void createUserSyncExpiredAccessToken() throws IOException, InterruptedException, BiffException {
+		ExtentReports extentReports = GenerateExtentReports.generateExtentReport();
+		ExtentTest extentTest = extentReports.createTest("Create User - Sync Failed - Invalid Or Expired Access Token");
+		try {
+			createUserSync.createUserSyncFailedDueToInvalidOrExpiredAccessToken(RequestContext.request,
+					ConfigContext.properties.getProperty("humana_dev"));
+			extentTest.log(Status.PASS, "TC10 - Create User - Sync Failed - Invalid Or Expired Access Token");
+		} catch (Exception e) {
+			extentTest.log(Status.FAIL,
+					"TC10 - Create User - Sync Failed - Invalid Or Expired Access Token failed: " + e.getMessage());
+			throw e;
+		}
+	}
+
+	@Test(enabled = true, priority = 11)
+	public void createUserSyncUserAlreadyExist() throws IOException, InterruptedException, BiffException {
+		ExtentReports extentReports = GenerateExtentReports.generateExtentReport();
+		ExtentTest extentTest = extentReports.createTest("Create User - Sync Failed - User Already Exist");
+		try {
+			createUserSync.createUserSyncFailedUserAlreadyExist(RequestContext.request,
+					ConfigContext.properties.getProperty("humana_dev"));
+			extentTest.log(Status.PASS, "TC11 - Create User - Sync Failed - User Already Exist");
+		} catch (Exception e) {
+			extentTest.log(Status.FAIL,
+					"TC11 - Create User - Sync Failed - User Already Exist failed: " + e.getMessage());
+			throw e;
+		}
+	}
+
+	@Test(enabled = true, priority = 12)
+	public void createUserSyncMissedId() throws IOException, InterruptedException, BiffException {
+		ExtentReports extentReports = GenerateExtentReports.generateExtentReport();
+		ExtentTest extentTest = extentReports.createTest("Create User - Sync Failed - Missed Id in Payload");
+		try {
+			createUserSync.createUserSyncFailedDueToMissedId(RequestContext.request,
+					ConfigContext.properties.getProperty("humana_dev"));
+			extentTest.log(Status.PASS, "TC12 - Create User - Sync Failed - Missed Id in Payload");
+		} catch (Exception e) {
+			extentTest.log(Status.FAIL,
+					"TC12 - Create User - Sync Failed - Missed Id in Payload failed: " + e.getMessage());
+			throw e;
+		}
+	}
+
+}

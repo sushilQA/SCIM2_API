@@ -1,3 +1,5 @@
+org\testing\TestScripts\CreateUserSync.class
+org\testing\TestSteps\Create_User_Sync.class
 org\testing\utilities\AuthContext.class
 org\testing\utilities\ConfigContext.class
 org\testing\utilities\BeforeRequest.class
@@ -11,6 +13,7 @@ org\testing\utilities\GenerateExtentReports.class
 org\testing\utilities\RequestContext.class
 org\testing\TestSteps\UserOAuth.class
 org\testing\Base\BaseClass.class
+org\testing\utilities\JsonTemplateReader.class
 org\testing\utilities\ApiValidation.class
 org\testing\utilities\RandomNumberGenerator.class
 org\testing\utilities\LoadPropertiesFile.class
