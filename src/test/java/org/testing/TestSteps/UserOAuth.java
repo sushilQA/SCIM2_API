@@ -45,7 +45,7 @@ public class UserOAuth {
 
 			System.out.println("Request URL: " + response.url());
 			System.out.println("Response status: " + response.status());
-			apiValidation.apiValidation(response);
+			apiValidation.apiValidation(response, 200, null);
 
 		} catch (RuntimeException e) {
 			System.out.println("userLoginWithValidUserNameAndPassword failed: " + e.getMessage());
@@ -64,7 +64,7 @@ public class UserOAuth {
 
 			System.out.println("Request URL: " + response.url());
 			System.out.println("Response status: " + response.status());
-			apiValidation.apiValidation(response);
+			apiValidation.apiValidation(response, 400, "Invalid username");
 
 		} catch (RuntimeException e) {
 			System.out.println("userLoginWithInValidUserName failed: " + e.getMessage());
@@ -83,7 +83,7 @@ public class UserOAuth {
 
 			System.out.println("Request URL: " + response.url());
 			System.out.println("Response status: " + response.status());
-			apiValidation.apiValidation(response);
+			apiValidation.apiValidation(response, 400, "Invalid username or password");
 
 		} catch (RuntimeException e) {
 			System.out.println("userLoginWithInValidPassword failed: " + e.getMessage());

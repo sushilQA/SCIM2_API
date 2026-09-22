@@ -295,9 +295,30 @@
   &lt;test thread-count=&quot;5&quot; name=&quot;Test&quot; verbose=&quot;0&quot;&gt;
     &lt;classes&gt;
       &lt;class name=&quot;org.testing.Base.BaseClass&quot;/&gt;
-      &lt;class name=&quot;org.testing.TestScripts.GenerateAccessToken&quot;/&gt;
-      &lt;class name=&quot;org.testing.TestScripts.UserAPIs_GetUser&quot;/&gt;
-      &lt;class name=&quot;org.testing.TestScripts.CreateUserSync&quot;/&gt;
+      &lt;class name=&quot;org.testing.TestScripts.GenerateAccessToken&quot;&gt;
+        &lt;methods&gt;
+          &lt;include name=&quot;generateAccessTokenWithValidCredentials&quot;/&gt;
+          &lt;include name=&quot;generateAccessTokenWithInvalidUserName&quot;/&gt;
+          &lt;include name=&quot;generateAccessTokenWithInvalidPassword&quot;/&gt;
+        &lt;/methods&gt;
+      &lt;/class&gt; &lt;!-- org.testing.TestScripts.GenerateAccessToken --&gt;
+      &lt;class name=&quot;org.testing.TestScripts.UserAPIs_GetUser&quot;&gt;
+        &lt;methods&gt;
+          &lt;include name=&quot;getAllUsers&quot;/&gt;
+          &lt;include name=&quot;getAllUsers_ExpiredORInvalidAccessToken&quot;/&gt;
+          &lt;include name=&quot;getSingleUser&quot;/&gt;
+          &lt;include name=&quot;getSingleUser_ExpiredOrInvalidAccessToken&quot;/&gt;
+          &lt;include name=&quot;getSingleUserNotExist&quot;/&gt;
+        &lt;/methods&gt;
+      &lt;/class&gt; &lt;!-- org.testing.TestScripts.UserAPIs_GetUser --&gt;
+      &lt;class name=&quot;org.testing.TestScripts.CreateUserSync&quot;&gt;
+        &lt;methods&gt;
+          &lt;include name=&quot;createUserSyncSuccess&quot;/&gt;
+          &lt;include name=&quot;createUserSyncExpiredAccessToken&quot;/&gt;
+          &lt;include name=&quot;createUserSyncUserAlreadyExist&quot;/&gt;
+          &lt;include name=&quot;createUserSyncMissedId&quot;/&gt;
+        &lt;/methods&gt;
+      &lt;/class&gt; &lt;!-- org.testing.TestScripts.CreateUserSync --&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Test --&gt;
 &lt;/suite&gt; &lt;!-- Suite --&gt;
@@ -339,58 +360,58 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(12);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'generateAccessTokenWithValidCredentials')
-data.setCell(0, 2, 'org.testing.TestScripts.GenerateAccessToken')
-data.setCell(0, 3, 1317);
+data.setCell(0, 1, 'createUserSyncUserAlreadyExist')
+data.setCell(0, 2, 'org.testing.TestScripts.CreateUserSync')
+data.setCell(0, 3, 1682);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'createUserSyncUserAlreadyExist')
+data.setCell(1, 1, 'createUserSyncSuccess')
 data.setCell(1, 2, 'org.testing.TestScripts.CreateUserSync')
-data.setCell(1, 3, 1193);
+data.setCell(1, 3, 1339);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'createUserSyncSuccess')
-data.setCell(2, 2, 'org.testing.TestScripts.CreateUserSync')
-data.setCell(2, 3, 924);
+data.setCell(2, 1, 'getAllUsers')
+data.setCell(2, 2, 'org.testing.TestScripts.UserAPIs_GetUser')
+data.setCell(2, 3, 1162);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'getAllUsers')
-data.setCell(3, 2, 'org.testing.TestScripts.UserAPIs_GetUser')
-data.setCell(3, 3, 753);
+data.setCell(3, 1, 'generateAccessTokenWithValidCredentials')
+data.setCell(3, 2, 'org.testing.TestScripts.GenerateAccessToken')
+data.setCell(3, 3, 782);
 data.setCell(4, 0, 4)
 data.setCell(4, 1, 'generateAccessTokenWithInvalidPassword')
 data.setCell(4, 2, 'org.testing.TestScripts.GenerateAccessToken')
-data.setCell(4, 3, 535);
+data.setCell(4, 3, 567);
 data.setCell(5, 0, 5)
-data.setCell(5, 1, 'generateAccessTokenWithInvalidUserName')
-data.setCell(5, 2, 'org.testing.TestScripts.GenerateAccessToken')
-data.setCell(5, 3, 409);
+data.setCell(5, 1, 'getSingleUser')
+data.setCell(5, 2, 'org.testing.TestScripts.UserAPIs_GetUser')
+data.setCell(5, 3, 460);
 data.setCell(6, 0, 6)
-data.setCell(6, 1, 'getSingleUser')
-data.setCell(6, 2, 'org.testing.TestScripts.UserAPIs_GetUser')
-data.setCell(6, 3, 370);
+data.setCell(6, 1, 'generateAccessTokenWithInvalidUserName')
+data.setCell(6, 2, 'org.testing.TestScripts.GenerateAccessToken')
+data.setCell(6, 3, 427);
 data.setCell(7, 0, 7)
 data.setCell(7, 1, 'getSingleUserNotExist')
 data.setCell(7, 2, 'org.testing.TestScripts.UserAPIs_GetUser')
-data.setCell(7, 3, 270);
+data.setCell(7, 3, 363);
 data.setCell(8, 0, 8)
 data.setCell(8, 1, 'createUserSyncMissedId')
 data.setCell(8, 2, 'org.testing.TestScripts.CreateUserSync')
-data.setCell(8, 3, 254);
+data.setCell(8, 3, 327);
 data.setCell(9, 0, 9)
 data.setCell(9, 1, 'getAllUsers_ExpiredORInvalidAccessToken')
 data.setCell(9, 2, 'org.testing.TestScripts.UserAPIs_GetUser')
-data.setCell(9, 3, 243);
+data.setCell(9, 3, 308);
 data.setCell(10, 0, 10)
-data.setCell(10, 1, 'createUserSyncExpiredAccessToken')
-data.setCell(10, 2, 'org.testing.TestScripts.CreateUserSync')
-data.setCell(10, 3, 241);
+data.setCell(10, 1, 'getSingleUser_ExpiredOrInvalidAccessToken')
+data.setCell(10, 2, 'org.testing.TestScripts.UserAPIs_GetUser')
+data.setCell(10, 3, 306);
 data.setCell(11, 0, 11)
-data.setCell(11, 1, 'getSingleUser_ExpiredOrInvalidAccessToken')
-data.setCell(11, 2, 'org.testing.TestScripts.UserAPIs_GetUser')
-data.setCell(11, 3, 239);
+data.setCell(11, 1, 'createUserSyncExpiredAccessToken')
+data.setCell(11, 2, 'org.testing.TestScripts.CreateUserSync')
+data.setCell(11, 3, 299);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 6 seconds</span>
+              <span class="suite-total-time">Total running time: 8 seconds</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -426,64 +447,64 @@ return data;
               <div class="chronological-class-name">org.testing.TestScripts.GenerateAccessToken</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">generateAccessTokenWithValidCredentials</span>
-                <span class="method-start">9694 ms</span>
+                <span class="method-start">7582 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">generateAccessTokenWithInvalidUserName</span>
-                <span class="method-start">11021 ms</span>
+                <span class="method-start">8368 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">generateAccessTokenWithInvalidPassword</span>
-                <span class="method-start">11433 ms</span>
+                <span class="method-start">8796 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">org.testing.TestScripts.UserAPIs_GetUser</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">getAllUsers</span>
-                <span class="method-start">11969 ms</span>
+                <span class="method-start">9364 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">getAllUsers_ExpiredORInvalidAccessToken</span>
-                <span class="method-start">12723 ms</span>
+                <span class="method-start">10527 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">getSingleUser</span>
-                <span class="method-start">12967 ms</span>
+                <span class="method-start">10835 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">getSingleUser_ExpiredOrInvalidAccessToken</span>
-                <span class="method-start">13338 ms</span>
+                <span class="method-start">11296 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">getSingleUserNotExist</span>
-                <span class="method-start">13577 ms</span>
+                <span class="method-start">11603 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">org.testing.TestScripts.CreateUserSync</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">createUserSyncSuccess</span>
-                <span class="method-start">13847 ms</span>
+                <span class="method-start">11967 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">createUserSyncExpiredAccessToken</span>
-                <span class="method-start">14771 ms</span>
+                <span class="method-start">13307 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">createUserSyncUserAlreadyExist</span>
-                <span class="method-start">15013 ms</span>
+                <span class="method-start">13607 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">createUserSyncMissedId</span>
-                <span class="method-start">16207 ms</span>
+                <span class="method-start">15290 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">org.testing.Base.BaseClass</div> <!-- chronological-class-name -->
               <div class="configuration-suite after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">16493 ms</span>
+                <span class="method-start">15652 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

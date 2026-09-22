@@ -24,7 +24,7 @@ public class UserAPIs_GetUser {
 		try {
 			getUsers.getAllUsers(RequestContext.request, ConfigContext.properties.getProperty("humana_dev"), "10", "10");
 			extentTest.log(Status.PASS, "TC4 - Get All Users executed successfully");
-		} catch (Exception e) {
+		} catch (AssertionError | Exception e) {
 			extentTest.log(Status.FAIL, "TC4 - Get All Users failed: " + e.getMessage());
 			throw e;
 		}
@@ -38,7 +38,7 @@ public class UserAPIs_GetUser {
 			getUsers.getAllUsersWithExpiredORInvalidAccessToken(RequestContext.request,
 					ConfigContext.properties.getProperty("humana_dev"), "10", "10");
 			extentTest.log(Status.PASS, "TC5 - Get All Users with Expired/Invalid Access Token Executed successfully");
-		} catch (Exception e) {
+		} catch (AssertionError | Exception e) {
 			extentTest.log(Status.FAIL, "TC5 - Get All Users with Expired/Invalid Access Token failed: " + e.getMessage());
 			throw e;
 		}
@@ -51,7 +51,7 @@ public class UserAPIs_GetUser {
 		try {
 			getUsers.getSingleUser(RequestContext.request, ConfigContext.properties.getProperty("humana_dev"), "HMQALenel24");
 			extentTest.log(Status.PASS, "TC6 - Get Single Users executed successfully");
-		} catch (Exception e) {
+		} catch (AssertionError | Exception e) {
 			extentTest.log(Status.FAIL, "TC6 - Get Single User failed: " + e.getMessage());
 			throw e;
 		}
@@ -65,7 +65,7 @@ public class UserAPIs_GetUser {
 			getUsers.getSingleUserWithExpiredOrInvalidAccessToken(RequestContext.request,
 					ConfigContext.properties.getProperty("humana_dev"), "HMQALenel24");
 			extentTest.log(Status.PASS, "TC7 - Get Single User with Expired/Invalid Access Token Executed Successfully");
-		} catch (Exception e) {
+		} catch (AssertionError | Exception e) {
 			extentTest.log(Status.FAIL, "TC7 - Get Single User with Expired/Invalid Access Token failed: " + e.getMessage());
 			throw e;
 		}
@@ -79,7 +79,7 @@ public class UserAPIs_GetUser {
 			getUsers.userNotExist(RequestContext.request, ConfigContext.properties.getProperty("humana_dev"),
 					RandomNumberGenerator.randomNumber());
 			extentTest.log(Status.PASS, "TC8 - Get Single User - User Not Exist");
-		} catch (Exception e) {
+		} catch (AssertionError | Exception e) {
 			extentTest.log(Status.FAIL, "TC8 - Get Single User - User Not Exist failed: " + e.getMessage());
 			throw e;
 		}

@@ -26,7 +26,7 @@ public class GenerateAccessToken {
 					ConfigContext.properties.getProperty("humana_dev"), "password", ExcelDataRead.readACell(1, 1),
 					ExcelDataRead.readACell(1, 2));
 			extentTest.log(Status.PASS, "TC1 - Access Token Generated Successfully");
-		} catch (Exception e) {
+		} catch (AssertionError | Exception e) {
 			extentTest.log(Status.FAIL, "TC1 - Access Token Generation failed: " + e.getMessage());
 			throw e;
 		}
@@ -41,7 +41,7 @@ public class GenerateAccessToken {
 					ConfigContext.properties.getProperty("humana_dev"), "password", ExcelDataRead.readACell(2, 1),
 					ExcelDataRead.readACell(1, 2));
 			extentTest.log(Status.PASS, "TC2 - Unable To Generate Access Token Due To Invalid Username");
-		} catch (Exception e) {
+		} catch (AssertionError | Exception e) {
 			extentTest.log(Status.FAIL, "TC2 - Invalid Username test failed: " + e.getMessage());
 			throw e;
 		}
@@ -56,7 +56,7 @@ public class GenerateAccessToken {
 					ConfigContext.properties.getProperty("humana_dev"), "password", ExcelDataRead.readACell(1, 1),
 					ExcelDataRead.readACell(2, 2));
 			extentTest.log(Status.PASS, "TC3 - Unable To Generate Access Token Due To Invalid Password");
-		} catch (Exception e) {
+		} catch (AssertionError | Exception e) {
 			extentTest.log(Status.FAIL, "TC3 - Invalid Password test failed: " + e.getMessage());
 			throw e;
 		}

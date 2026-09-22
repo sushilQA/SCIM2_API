@@ -9,10 +9,16 @@ public class GenerateExtentReports {
 
 	public static ExtentReports generateExtentReport() {
 		if (extentReports == null) {
-			ExtentSparkReporter sparkReporter = new ExtentSparkReporter(
-					"../SCIM2_API/test-output/SCIM2_API_Report.html");
-			extentReports = new ExtentReports();
-			extentReports.attachReporter(sparkReporter);
+			try {
+				ExtentSparkReporter sparkReporter = new ExtentSparkReporter(
+						"../SCIM2_API/test-output/SCIM2_API_Report.html");
+				extentReports = new ExtentReports();
+				extentReports.attachReporter(sparkReporter);
+
+			} catch (Exception e) {
+				System.out.println("Failed to initialize ExtentReports: " + e.getMessage());
+				throw new RuntimeException("Failed to initialize ExtentReports", e);
+			}
 		}
 		return extentReports;
 	}

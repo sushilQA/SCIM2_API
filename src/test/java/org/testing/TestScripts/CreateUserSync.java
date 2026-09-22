@@ -24,7 +24,7 @@ public class CreateUserSync {
 			createUserSync.createUserSyncSuccess(RequestContext.request,
 					ConfigContext.properties.getProperty("humana_dev"));
 			extentTest.log(Status.PASS, "TC9 - Create User Sync");
-		} catch (Exception e) {
+		} catch (AssertionError | Exception e) {
 			extentTest.log(Status.FAIL, "TC9 - Create User Sync failed: " + e.getMessage());
 			throw e;
 		}
@@ -38,7 +38,7 @@ public class CreateUserSync {
 			createUserSync.createUserSyncFailedDueToInvalidOrExpiredAccessToken(RequestContext.request,
 					ConfigContext.properties.getProperty("humana_dev"));
 			extentTest.log(Status.PASS, "TC10 - Create User - Sync Failed - Expired/Invalid Access Token");
-		} catch (Exception e) {
+		} catch (AssertionError | Exception e) {
 			extentTest.log(Status.FAIL,
 					"TC10 - Create User - Sync Failed - Expired/Invalid Access Token failed: " + e.getMessage());
 			throw e;
@@ -53,7 +53,7 @@ public class CreateUserSync {
 			createUserSync.createUserSyncFailedUserAlreadyExist(RequestContext.request,
 					ConfigContext.properties.getProperty("humana_dev"));
 			extentTest.log(Status.PASS, "TC11 - Create User - Sync Failed - User Already Exist");
-		} catch (Exception e) {
+		} catch (AssertionError | Exception e) {
 			extentTest.log(Status.FAIL,
 					"TC11 - Create User - Sync Failed - User Already Exist failed: " + e.getMessage());
 			throw e;
@@ -68,7 +68,7 @@ public class CreateUserSync {
 			createUserSync.createUserSyncFailedDueToMissedId(RequestContext.request,
 					ConfigContext.properties.getProperty("humana_dev"));
 			extentTest.log(Status.PASS, "TC12 - Create User - Sync Failed - Missed Id in Payload");
-		} catch (Exception e) {
+		} catch (AssertionError | Exception e) {
 			extentTest.log(Status.FAIL,
 					"TC12 - Create User - Sync Failed - Missed Id in Payload failed: " + e.getMessage());
 			throw e;

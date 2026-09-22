@@ -24,7 +24,7 @@ public class GetUsers {
 
 			System.out.println("Request URL: " + response.url());
 			System.out.println("Response status: " + response.status());
-			apiValidation.apiValidation(response);
+			apiValidation.apiValidation(response, 200);
 
 		} catch (RuntimeException e) {
 			System.out.println("Unexpected error in getAllUsers: " + e.getMessage());
@@ -44,7 +44,7 @@ public class GetUsers {
 
 			System.out.println("Request URL: " + response.url());
 			System.out.println("Response status: " + response.status());
-			apiValidation.apiValidation(response);
+			apiValidation.apiValidation(response,401, "Access Token");
 
 		} catch (RuntimeException e) {
 			System.out.println("Unexpected error in getAllUsersWithExpiredORInvalidAccessToken: " + e.getMessage());
@@ -62,7 +62,7 @@ public class GetUsers {
 
 			System.out.println("Request URL: " + response.url());
 			System.out.println("Response status: " + response.status());
-			apiValidation.apiValidation(response);
+			apiValidation.apiValidation(response, 200);
 
 		} catch (RuntimeException e) {
 			System.out.println("Unexpected error in getSingleUser: " + e.getMessage());
@@ -81,7 +81,7 @@ public class GetUsers {
 
 			System.out.println("Request URL: " + response.url());
 			System.out.println("Response status: " + response.status());
-			apiValidation.apiValidation(response);
+			apiValidation.apiValidation(response,401, "Access Token");
 
 		} catch (RuntimeException e) {
 			System.out.println("Unexpected error in getSingleUserWithExpiredOrInvalidAccessToken: " + e.getMessage());
@@ -99,7 +99,7 @@ public class GetUsers {
 
 			System.out.println("Request URL: " + response.url());
 			System.out.println("Response status: " + response.status());
-			apiValidation.apiValidation(response);
+			apiValidation.apiValidation(response,404 , "not found");
 
 		} catch (RuntimeException e) {
 			System.out.println("Unexpected error in userNotExist: " + e.getMessage());

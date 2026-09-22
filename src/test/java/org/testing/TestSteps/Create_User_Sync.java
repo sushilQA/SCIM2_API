@@ -32,7 +32,7 @@ public class Create_User_Sync {
 
 			System.out.println("Request URL: " + response.url());
 			System.out.println("Response status: " + response.status());
-			apiValidation.apiValidation(response);
+			apiValidation.apiValidation(response, 201);
 
 		} catch (IOException e) {
 			System.out.println("createUserSyncSuccess failed: " + e.getMessage());
@@ -60,7 +60,7 @@ public class Create_User_Sync {
 
 			System.out.println("Request URL: " + response.url());
 			System.out.println("Response status: " + response.status());
-			apiValidation.apiValidation(response);
+			apiValidation.apiValidation(response,401, "Access Token");
 
 		} catch (IOException e) {
 			System.out.println("createUserSyncFailedDueToInvalidOrExpiredAccessToken failed: " + e.getMessage());
@@ -76,7 +76,7 @@ public class Create_User_Sync {
 			throws IOException, InterruptedException {
 
 		System.out
-				.println("******************** Create User - Sync Failed - User Already Exist ********************\n");
+				.println("\n ******************** Create User - Sync Failed - User Already Exist ********************\n");
 		try {
 			String existingUserId = "SCIM" + RandomNumberGenerator.randomNumber();
 
@@ -97,7 +97,7 @@ public class Create_User_Sync {
 							.setHeader("Content-Type", "application/json").setData(jsonPayload));
 
 			System.out.println("Second creation status (expected failure): " + secondResponse.status());
-			apiValidation.apiValidation(secondResponse);
+			apiValidation.apiValidation(secondResponse,400, "Already Exist");
 
 		} catch (IOException e) {
 			System.out.println("createUserSyncFailedUserAlreadyExist failed: " + e.getMessage());
@@ -125,7 +125,7 @@ public class Create_User_Sync {
 
 			System.out.println("Request URL: " + response.url());
 			System.out.println("Response status: " + response.status());
-			apiValidation.apiValidation(response);
+			apiValidation.apiValidation(response,400, "id is a mandatory");
 
 		} catch (IOException e) {
 			System.out.println("createUserSyncFailedDueToMissedId failed: " + e.getMessage());
