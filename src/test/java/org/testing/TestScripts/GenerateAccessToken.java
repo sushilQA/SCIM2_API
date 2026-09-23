@@ -23,8 +23,8 @@ public class GenerateAccessToken {
 		ExtentTest extentTest = extentReports.createTest("User OAuth With Valid Credentials");
 		try {
 			login.userLoginWithValidUserNameAndPassword(RequestContext.request,
-					ConfigContext.properties.getProperty("humana_dev"), "password", ExcelDataRead.readACell(1, 1),
-					ExcelDataRead.readACell(1, 2));
+					ConfigContext.properties.getProperty("humana_dev"), "password", ExcelDataRead.readACell(1, 0),
+					ExcelDataRead.readACell(1, 1), extentTest, 200);
 			extentTest.log(Status.PASS, "TC1 - Access Token Generated Successfully");
 		} catch (AssertionError | Exception e) {
 			extentTest.log(Status.FAIL, "TC1 - Access Token Generation failed: " + e.getMessage());
@@ -38,8 +38,8 @@ public class GenerateAccessToken {
 		ExtentTest extentTest = extentReports.createTest("User OAuth With Invalid Username");
 		try {
 			login.userLoginWithInValidUserName(RequestContext.request,
-					ConfigContext.properties.getProperty("humana_dev"), "password", ExcelDataRead.readACell(2, 1),
-					ExcelDataRead.readACell(1, 2));
+					ConfigContext.properties.getProperty("humana_dev"), "password", ExcelDataRead.readACell(2, 0),
+					ExcelDataRead.readACell(1, 1), extentTest, 400, "Invalid username or password");
 			extentTest.log(Status.PASS, "TC2 - Unable To Generate Access Token Due To Invalid Username");
 		} catch (AssertionError | Exception e) {
 			extentTest.log(Status.FAIL, "TC2 - Invalid Username test failed: " + e.getMessage());
@@ -53,8 +53,8 @@ public class GenerateAccessToken {
 		ExtentTest extentTest = extentReports.createTest("User OAuth With Invalid Password");
 		try {
 			login.userLoginWithInValidPassword(RequestContext.request,
-					ConfigContext.properties.getProperty("humana_dev"), "password", ExcelDataRead.readACell(1, 1),
-					ExcelDataRead.readACell(2, 2));
+					ConfigContext.properties.getProperty("humana_dev"), "password", ExcelDataRead.readACell(1, 0),
+					ExcelDataRead.readACell(2, 1), extentTest, 400, "Invalid username or password");
 			extentTest.log(Status.PASS, "TC3 - Unable To Generate Access Token Due To Invalid Password");
 		} catch (AssertionError | Exception e) {
 			extentTest.log(Status.FAIL, "TC3 - Invalid Password test failed: " + e.getMessage());

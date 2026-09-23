@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import org.testing.utilities.ApiValidation;
 import org.testing.utilities.AuthContext;
 
+import com.aventstack.extentreports.ExtentTest;
 import com.microsoft.playwright.APIRequestContext;
 import com.microsoft.playwright.APIResponse;
 import com.microsoft.playwright.options.RequestOptions;
@@ -19,8 +20,11 @@ public class UserOAuth {
 
 		try {
 			APIResponse response = request.post(URL + "/api/scim/oauth/token",
-					RequestOptions.create().setQueryParam("grant_type", grant_type).setQueryParam("username", username)
-							.setQueryParam("password", password).setHeader("Content-Type", "application/json"));
+					RequestOptions.create()
+							.setQueryParam("grant_type", grant_type)
+							.setQueryParam("username", username)
+							.setQueryParam("password", password)
+							.setHeader("Content-Type", "application/json"));
 
 			JSONObject jsonResponse = new JSONObject(response.text());
 			String accessToken = jsonResponse.getString("access_token");
@@ -32,20 +36,43 @@ public class UserOAuth {
 			throw e;
 		}
 	}
+	
+	public void userLoginNoAuth(APIRequestContext request, String URL, String grant_type, String username, String password)
+			throws IOException, InterruptedException {
 
-	public void userLoginWithValidUserNameAndPassword(APIRequestContext request, String URL, String grant_type,
-			String username, String password) throws IOException, InterruptedException {
-
-		System.out
-				.println("\n ******************** User Login With Valid UserName And Password ********************\n");
 		try {
 			APIResponse response = request.post(URL + "/api/scim/oauth/token",
-					RequestOptions.create().setQueryParam("grant_type", grant_type).setQueryParam("username", username)
-							.setQueryParam("password", password).setHeader("Content-Type", "application/json"));
+					RequestOptions.create()
+							.setQueryParam("grant_type", grant_type)
+							.setQueryParam("username", username)
+							.setQueryParam("password", password)
+							.setHeader("Content-Type", "application/json"));
 
-			System.out.println("Request URL: " + response.url());
-			System.out.println("Response status: " + response.status());
-			apiValidation.apiValidation(response, 200, null);
+			JSONObject jsonResponse = new JSONObject(response.text());
+			String noAUthToken = jsonResponse.getString("access_token");
+			AuthContext.noAuthToken = noAUthToken;
+			System.out.println("No Auth Token stored before Suite: " + noAUthToken);
+
+		} catch (RuntimeException e) {
+			System.out.println("userLogin failed: " + e.getMessage());
+			throw e;
+		}
+	}
+
+	public void userLoginWithValidUserNameAndPassword(APIRequestContext request, String URL, String grant_type,
+			String username, String password, ExtentTest extentTest, int expectedStatusCode)
+			throws IOException, InterruptedException {
+
+		System.out.println("\n ******************** User Login With Valid UserName And Password ********************\n");
+		try {
+			APIResponse response = request.post(URL + "/api/scim/oauth/token",
+					RequestOptions.create()
+							.setQueryParam("grant_type", grant_type)
+							.setQueryParam("username", username)
+							.setQueryParam("password", password)
+							.setHeader("Content-Type", "application/json"));
+
+			apiValidation.apiValidation(response, extentTest, expectedStatusCode);
 
 		} catch (RuntimeException e) {
 			System.out.println("userLoginWithValidUserNameAndPassword failed: " + e.getMessage());
@@ -53,18 +80,20 @@ public class UserOAuth {
 		}
 	}
 
-	public void userLoginWithInValidUserName(APIRequestContext request, String URL, String grant_type, String username,
-			String password) throws IOException, InterruptedException {
+	public void userLoginWithInValidUserName(APIRequestContext request, String URL, String grant_type,
+			String username, String password, ExtentTest extentTest, int expectedStatusCode, String expectedMessage)
+			throws IOException, InterruptedException {
 
 		System.out.println("\n ******************** User Login With InValid UserName ********************\n");
 		try {
 			APIResponse response = request.post(URL + "/api/scim/oauth/token",
-					RequestOptions.create().setQueryParam("grant_type", grant_type).setQueryParam("username", username)
-							.setQueryParam("password", password).setHeader("Content-Type", "application/json"));
+					RequestOptions.create()
+							.setQueryParam("grant_type", grant_type)
+							.setQueryParam("username", username)
+							.setQueryParam("password", password)
+							.setHeader("Content-Type", "application/json"));
 
-			System.out.println("Request URL: " + response.url());
-			System.out.println("Response status: " + response.status());
-			apiValidation.apiValidation(response, 400, "Invalid username");
+			apiValidation.apiValidation(response, extentTest, expectedStatusCode, expectedMessage);
 
 		} catch (RuntimeException e) {
 			System.out.println("userLoginWithInValidUserName failed: " + e.getMessage());
@@ -72,18 +101,20 @@ public class UserOAuth {
 		}
 	}
 
-	public void userLoginWithInValidPassword(APIRequestContext request, String URL, String grant_type, String username,
-			String password) throws IOException, InterruptedException {
+	public void userLoginWithInValidPassword(APIRequestContext request, String URL, String grant_type,
+			String username, String password, ExtentTest extentTest, int expectedStatusCode, String expectedMessage)
+			throws IOException, InterruptedException {
 
 		System.out.println("\n ******************** User Login With InValid Password ********************\n");
 		try {
 			APIResponse response = request.post(URL + "/api/scim/oauth/token",
-					RequestOptions.create().setQueryParam("grant_type", grant_type).setQueryParam("username", username)
-							.setQueryParam("password", password).setHeader("Content-Type", "application/json"));
+					RequestOptions.create()
+							.setQueryParam("grant_type", grant_type)
+							.setQueryParam("username", username)
+							.setQueryParam("password", password)
+							.setHeader("Content-Type", "application/json"));
 
-			System.out.println("Request URL: " + response.url());
-			System.out.println("Response status: " + response.status());
-			apiValidation.apiValidation(response, 400, "Invalid username or password");
+			apiValidation.apiValidation(response, extentTest, expectedStatusCode, expectedMessage);
 
 		} catch (RuntimeException e) {
 			System.out.println("userLoginWithInValidPassword failed: " + e.getMessage());

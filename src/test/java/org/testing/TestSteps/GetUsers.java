@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.testing.utilities.ApiValidation;
 import org.testing.utilities.AuthContext;
 
+import com.aventstack.extentreports.ExtentTest;
 import com.microsoft.playwright.APIRequestContext;
 import com.microsoft.playwright.APIResponse;
 import com.microsoft.playwright.options.RequestOptions;
@@ -13,8 +14,8 @@ public class GetUsers {
 
 	ApiValidation apiValidation = new ApiValidation();
 
-	public void getAllUsers(APIRequestContext request, String URL, String startIndex, String count)
-			throws IOException, InterruptedException {
+	public void getAllUsers(APIRequestContext request, String URL, String startIndex, String count,
+			ExtentTest extentTest, int expectedStatusCode) throws IOException, InterruptedException {
 
 		System.out.println("\n ******************** Get All Users ********************\n");
 		try {
@@ -22,87 +23,80 @@ public class GetUsers {
 					RequestOptions.create().setQueryParam("startIndex", startIndex).setQueryParam("count", count)
 							.setHeader("Authorization", "Bearer " + AuthContext.accessToken));
 
-			System.out.println("Request URL: " + response.url());
-			System.out.println("Response status: " + response.status());
-			apiValidation.apiValidation(response, 200);
+			apiValidation.apiValidation(response, extentTest, expectedStatusCode);
 
 		} catch (RuntimeException e) {
-			System.out.println("Unexpected error in getAllUsers: " + e.getMessage());
+			System.out.println("getAllUsers failed: " + e.getMessage());
 			throw e;
 		}
 	}
 
 	public void getAllUsersWithExpiredORInvalidAccessToken(APIRequestContext request, String URL, String startIndex,
-			String count) throws IOException, InterruptedException {
+			String count, ExtentTest extentTest, int expectedStatusCode) throws IOException, InterruptedException {
 
 		System.out.println(
-				"\n ******************** Get All Users with Invalid/Expired Access Token ********************\n");
+				"\n ******************** Get All Users with Invalid / Expired Access Token ********************\n");
 		try {
 			APIResponse response = request.get(URL + "/api/scim/v2/users",
 					RequestOptions.create().setQueryParam("startIndex", startIndex).setQueryParam("count", count)
 							.setHeader("Authorization", "Bearer " + AuthContext.expiredToken));
 
-			System.out.println("Request URL: " + response.url());
-			System.out.println("Response status: " + response.status());
-			apiValidation.apiValidation(response,401, "Access Token");
+			apiValidation.apiValidation(response, extentTest, expectedStatusCode);
 
 		} catch (RuntimeException e) {
-			System.out.println("Unexpected error in getAllUsersWithExpiredORInvalidAccessToken: " + e.getMessage());
+			System.out.println("getAllUsersWithExpiredORInvalidAccessToken failed: " + e.getMessage());
 			throw e;
 		}
 	}
 
-	public void getSingleUser(APIRequestContext request, String URL, String userId)
-			throws IOException, InterruptedException {
+	public void getSingleUser(APIRequestContext request, String URL, String userId, ExtentTest extentTest,
+			int expectedStatusCode) throws IOException, InterruptedException {
 
 		System.out.println("\n ******************** Get Single User ********************\n");
 		try {
 			APIResponse response = request.get(URL + "/api/scim/v2/users/" + userId,
-					RequestOptions.create().setHeader("Authorization", "Bearer " + AuthContext.accessToken));
+					RequestOptions.create()
+							.setHeader("Authorization", "Bearer " + AuthContext.accessToken));
 
-			System.out.println("Request URL: " + response.url());
-			System.out.println("Response status: " + response.status());
-			apiValidation.apiValidation(response, 200);
+			apiValidation.apiValidation(response, extentTest, expectedStatusCode);
 
 		} catch (RuntimeException e) {
-			System.out.println("Unexpected error in getSingleUser: " + e.getMessage());
+			System.out.println("getSingleUser failed: " + e.getMessage());
 			throw e;
 		}
 	}
 
-	public void getSingleUserWithExpiredOrInvalidAccessToken(APIRequestContext request, String URL, String userId)
-			throws IOException, InterruptedException {
+	public void getSingleUserWithExpiredOrInvalidAccessToken(APIRequestContext request, String URL, String userId,
+			ExtentTest extentTest, int expectedStatusCode) throws IOException, InterruptedException {
 
 		System.out.println(
-				"\n ******************** Get Single User With Expired/Invalid Access Token ********************\n");
+				"\n ******************** Get Single User With Expired Or Invalid Access Token ********************\n");
 		try {
 			APIResponse response = request.get(URL + "/api/scim/v2/users/" + userId,
-					RequestOptions.create().setHeader("Authorization", "Bearer " + AuthContext.expiredToken));
+					RequestOptions.create()
+							.setHeader("Authorization", "Bearer " + AuthContext.expiredToken));
 
-			System.out.println("Request URL: " + response.url());
-			System.out.println("Response status: " + response.status());
-			apiValidation.apiValidation(response,401, "Access Token");
+			apiValidation.apiValidation(response, extentTest, expectedStatusCode);
 
 		} catch (RuntimeException e) {
-			System.out.println("Unexpected error in getSingleUserWithExpiredOrInvalidAccessToken: " + e.getMessage());
+			System.out.println("getSingleUserWithExpiredOrInvalidAccessToken failed: " + e.getMessage());
 			throw e;
 		}
 	}
 
-	public void userNotExist(APIRequestContext request, String URL, String userId)
-			throws IOException, InterruptedException {
+	public void userNotExist(APIRequestContext request, String URL, String userId, ExtentTest extentTest,
+			int expectedStatusCode, String expectedMessage) throws IOException, InterruptedException {
 
 		System.out.println("\n ******************** Get Single User - User Not Exist ********************\n");
 		try {
 			APIResponse response = request.get(URL + "/api/scim/v2/users/" + userId,
-					RequestOptions.create().setHeader("Authorization", "Bearer " + AuthContext.accessToken));
+					RequestOptions.create()
+							.setHeader("Authorization", "Bearer " + AuthContext.accessToken));
 
-			System.out.println("Request URL: " + response.url());
-			System.out.println("Response status: " + response.status());
-			apiValidation.apiValidation(response,404 , "not found");
+			apiValidation.apiValidation(response, extentTest, expectedStatusCode, expectedMessage);
 
 		} catch (RuntimeException e) {
-			System.out.println("Unexpected error in userNotExist: " + e.getMessage());
+			System.out.println("userNotExist failed: " + e.getMessage());
 			throw e;
 		}
 	}

@@ -28,6 +28,7 @@
 					<include name="createUserSyncExpiredAccessToken" />
 					<include name="createUserSyncUserAlreadyExist" />
 					<include name="createUserSyncMissedId" />
+					<include name="createUserNoAuth" />
 				</methods>
 
 			</class>

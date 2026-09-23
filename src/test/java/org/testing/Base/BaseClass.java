@@ -21,10 +21,11 @@ public class BaseClass {
 			ConfigContext.properties = LoadPropertiesFile.handlePropertyFile("../SCIM2_API/URI.properties");
 			RequestContext.playwright = Playwright.create();
 			RequestContext.request = RequestContext.playwright.request().newContext();
-
 			UserOAuth login = new UserOAuth();
 			login.userLogin(RequestContext.request, ConfigContext.properties.getProperty("humana_dev"), "password",
-					ExcelDataRead.readACell(1, 1), ExcelDataRead.readACell(1, 2));
+					ExcelDataRead.readACell(1, 0), ExcelDataRead.readACell(1, 1));
+			login.userLoginNoAuth(RequestContext.request, ConfigContext.properties.getProperty("humana_dev"), "password",
+					ExcelDataRead.readACell(3, 0), ExcelDataRead.readACell(3, 1));
 
 		} catch (IOException | InterruptedException | BiffException e) {
 			System.out.println("Suite setup failed: " + e.getMessage());

@@ -4,5 +4,6 @@ public class AuthContext {
 
 	public static String accessToken;
 	public static String expiredToken = RandomNumberGenerator.randomNumber().toString();
+	public static String noAuthToken; 
 
 }

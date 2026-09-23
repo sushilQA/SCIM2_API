@@ -9,6 +9,7 @@ import org.testing.utilities.AuthContext;
 import org.testing.utilities.JsonTemplateReader;
 import org.testing.utilities.RandomNumberGenerator;
 
+import com.aventstack.extentreports.ExtentTest;
 import com.microsoft.playwright.APIRequestContext;
 import com.microsoft.playwright.APIResponse;
 import com.microsoft.playwright.options.RequestOptions;
@@ -17,7 +18,8 @@ public class Create_User_Sync {
 
 	ApiValidation apiValidation = new ApiValidation();
 
-	public void createUserSyncSuccess(APIRequestContext request, String URL) throws IOException, InterruptedException {
+	public void createUserSyncSuccess(APIRequestContext request, String URL, ExtentTest extentTest,
+			int expectedStatusCode) throws IOException, InterruptedException {
 
 		System.out.println("\n ******************** Create User - Sync Success ********************\n");
 		try {
@@ -30,24 +32,20 @@ public class Create_User_Sync {
 					RequestOptions.create().setHeader("Authorization", "Bearer " + AuthContext.accessToken)
 							.setHeader("Content-Type", "application/json").setData(jsonPayload));
 
-			System.out.println("Request URL: " + response.url());
-			System.out.println("Response status: " + response.status());
-			apiValidation.apiValidation(response, 201);
+			apiValidation.apiValidation(response, extentTest, expectedStatusCode);
 
 		} catch (IOException e) {
 			System.out.println("createUserSyncSuccess failed: " + e.getMessage());
 			throw e;
-		} catch (Exception e) {
-			System.out.println("Unexpected error in createUserSyncSuccess: " + e.getMessage());
-			throw e;
 		}
 	}
 
-	public void createUserSyncFailedDueToInvalidOrExpiredAccessToken(APIRequestContext request, String URL)
+	public void createUserSyncFailedDueToInvalidOrExpiredAccessToken(APIRequestContext request, String URL,
+			ExtentTest extentTest, int expectedStatusCode, String expectedMessage)
 			throws IOException, InterruptedException {
 
 		System.out.println(
-				"\n ******************** Create User - Sync Failed - Invalid/Expired Access Token ********************\n");
+				"\n ******************** Create User - Sync Failed - Invalid Or Expired Access Token ********************\n");
 		try {
 			Map<String, String> tokens = new HashMap<>();
 			tokens.put("{{userName}}", "SCIM" + RandomNumberGenerator.randomNumber());
@@ -58,25 +56,19 @@ public class Create_User_Sync {
 					RequestOptions.create().setHeader("Authorization", "Bearer " + AuthContext.expiredToken)
 							.setHeader("Content-Type", "application/json").setData(jsonPayload));
 
-			System.out.println("Request URL: " + response.url());
-			System.out.println("Response status: " + response.status());
-			apiValidation.apiValidation(response,401, "Access Token");
+			apiValidation.apiValidation(response, extentTest, expectedStatusCode, expectedMessage);
 
 		} catch (IOException e) {
 			System.out.println("createUserSyncFailedDueToInvalidOrExpiredAccessToken failed: " + e.getMessage());
 			throw e;
-		} catch (Exception e) {
-			System.out.println(
-					"Unexpected error in createUserSyncFailedDueToInvalidOrExpiredAccessToken: " + e.getMessage());
-			throw e;
 		}
 	}
 
-	public void createUserSyncFailedUserAlreadyExist(APIRequestContext request, String URL)
-			throws IOException, InterruptedException {
+	public void createUserSyncFailedUserAlreadyExist(APIRequestContext request, String URL, ExtentTest extentTest,
+			int expectedStatusCode, String expectedMessage) throws IOException, InterruptedException {
 
 		System.out
-				.println("\n ******************** Create User - Sync Failed - User Already Exist ********************\n");
+				.println("******************** Create User - Sync Failed - User Already Exist ********************\n");
 		try {
 			String existingUserId = "SCIM" + RandomNumberGenerator.randomNumber();
 
@@ -85,31 +77,27 @@ public class Create_User_Sync {
 			String jsonPayload = JsonTemplateReader.getJsonWithReplacedTokens(
 					"../SCIM2_API/src/test/java/org/testing/resources/CreateUserBody.json", tokens);
 
-			// Create User First Call - successfully
+			// First call - creates the user successfully
 			APIResponse firstResponse = request.post(URL + "/api/scim/v2/users",
 					RequestOptions.create().setHeader("Authorization", "Bearer " + AuthContext.accessToken)
 							.setHeader("Content-Type", "application/json").setData(jsonPayload));
 			System.out.println("First creation status: " + firstResponse.status());
 
-			// Create User Second Call - User Already Exist Case
+			// Second call - same userId, should fail (already exists)
 			APIResponse secondResponse = request.post(URL + "/api/scim/v2/users",
 					RequestOptions.create().setHeader("Authorization", "Bearer " + AuthContext.accessToken)
 							.setHeader("Content-Type", "application/json").setData(jsonPayload));
 
-			System.out.println("Second creation status (expected failure): " + secondResponse.status());
-			apiValidation.apiValidation(secondResponse,400, "Already Exist");
+			apiValidation.apiValidation(secondResponse, extentTest, expectedStatusCode, expectedMessage);
 
 		} catch (IOException e) {
 			System.out.println("createUserSyncFailedUserAlreadyExist failed: " + e.getMessage());
 			throw e;
-		} catch (Exception e) {
-			System.out.println("Unexpected error in createUserSyncFailedUserAlreadyExist: " + e.getMessage());
-			throw e;
 		}
 	}
 
-	public void createUserSyncFailedDueToMissedId(APIRequestContext request, String URL)
-			throws IOException, InterruptedException {
+	public void createUserSyncFailedDueToMissedId(APIRequestContext request, String URL, ExtentTest extentTest,
+			int expectedStatusCode, String expectedMessage) throws IOException, InterruptedException {
 
 		System.out.println(
 				"\n ******************** Create User - Sync Failed - Missed Id in Payload ********************\n");
@@ -123,15 +111,33 @@ public class Create_User_Sync {
 					RequestOptions.create().setHeader("Authorization", "Bearer " + AuthContext.accessToken)
 							.setHeader("Content-Type", "application/json").setData(jsonPayload));
 
-			System.out.println("Request URL: " + response.url());
-			System.out.println("Response status: " + response.status());
-			apiValidation.apiValidation(response,400, "id is a mandatory");
+			apiValidation.apiValidation(response, extentTest, expectedStatusCode, expectedMessage);
 
 		} catch (IOException e) {
 			System.out.println("createUserSyncFailedDueToMissedId failed: " + e.getMessage());
 			throw e;
-		} catch (Exception e) {
-			System.out.println("Unexpected error in createUserSyncFailedDueToMissedId: " + e.getMessage());
+		}
+	}
+
+	public void createUserSyncFailedDueNoAuth(APIRequestContext request, String URL, ExtentTest extentTest,
+			int expectedStatusCode) throws IOException, InterruptedException {
+
+		System.out
+				.println("\n ******************** Create User - Sync Failed - No Auth Defined ********************\n");
+		try {
+			Map<String, String> tokens = new HashMap<>();
+			tokens.put("{{userName}}", "SCIM" + RandomNumberGenerator.randomNumber());
+			String jsonPayload = JsonTemplateReader.getJsonWithReplacedTokens(
+					"../SCIM2_API/src/test/java/org/testing/resources/CreateUserBody.json", tokens);
+
+			APIResponse response = request.post(URL + "/api/scim/v2/users",
+					RequestOptions.create().setHeader("Authorization", "Bearer " + AuthContext.noAuthToken)
+							.setHeader("Content-Type", "application/json").setData(jsonPayload));
+
+			apiValidation.apiValidation(response, extentTest, expectedStatusCode);
+
+		} catch (IOException e) {
+			System.out.println("createUserSyncSuccess failed: " + e.getMessage());
 			throw e;
 		}
 	}

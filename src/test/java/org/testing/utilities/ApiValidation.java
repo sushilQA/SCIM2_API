@@ -4,36 +4,50 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.testng.Assert;
 
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.markuputils.CodeLanguage;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.microsoft.playwright.APIResponse;
 
 public class ApiValidation {
 
-	// Existing method - no assertions, just prints/logs the response
-	public void apiValidation(APIResponse response) {
-		extractAndPrint(response, null, null);
+	// No assertion - just logs
+	public void apiValidation(APIResponse response, ExtentTest extentTest) {
+		extractAndPrint(response, extentTest, null, null);
 	}
 
-	// Overload - validates ONLY the expected message, status code is not checked
-	public void apiValidation(APIResponse response, String expectedMessage) {
-		extractAndPrint(response, null, expectedMessage);
+	// Validates ONLY the expected message
+	public void apiValidation(APIResponse response, ExtentTest extentTest, String expectedMessage) {
+		extractAndPrint(response, extentTest, null, expectedMessage);
 	}
 
-	// Overload - validates ONLY the expected status code, message is not checked
-	public void apiValidation(APIResponse response, int expectedStatusCode) {
-		extractAndPrint(response, expectedStatusCode, null);
+	// Validates ONLY the expected status code
+	public void apiValidation(APIResponse response, ExtentTest extentTest, int expectedStatusCode) {
+		extractAndPrint(response, extentTest, expectedStatusCode, null);
 	}
 
-	// Overload - validates status code and expected message via TestNG assertions
-	public void apiValidation(APIResponse response, int expectedStatusCode, String expectedMessage) {
-		extractAndPrint(response, expectedStatusCode, expectedMessage);
+	// Validates status code and expected message
+	public void apiValidation(APIResponse response, ExtentTest extentTest, int expectedStatusCode, String expectedMessage) {
+		extractAndPrint(response, extentTest, expectedStatusCode, expectedMessage);
 	}
 
-	private void extractAndPrint(APIResponse response, Integer expectedStatusCode, String expectedMessage) {
+	private void extractAndPrint(APIResponse response, ExtentTest extentTest, Integer expectedStatusCode, String expectedMessage) {
 
 		int statusCode = response.status();
 		String body = response.text();
 		JSONObject jsonObject = null;
 		String actualMessage = null;
+
+		// --- Request/Response basic details (informational only - not PASS/FAIL) ---
+		extentTest.info("Request URL: " + response.url());
+		extentTest.info("Response Status Code: " + statusCode);
+
+		// --- Full response body as formatted JSON code block ---
+		try {
+			extentTest.info(MarkupHelper.createCodeBlock(body, CodeLanguage.JSON));
+		} catch (Exception e) {
+			extentTest.info("Raw Response Body: " + body);
+		}
 
 		try {
 			jsonObject = new JSONObject(body);
@@ -47,7 +61,6 @@ public class ApiValidation {
 
 			} else if (statusCode == 400) {
 				if (jsonObject != null && jsonObject.has("messages")) {
-					// OAuth-style error: { "messages": [ { "messageDisplayText": "..." } ] }
 					JSONArray messages = jsonObject.getJSONArray("messages");
 					if (messages.length() > 0) {
 						actualMessage = messages.getJSONObject(0).getString("messageDisplayText");
@@ -56,7 +69,6 @@ public class ApiValidation {
 						System.out.println("400 error - 'messages' array is empty:\n" + body);
 					}
 				} else if (jsonObject != null && jsonObject.has("errors")) {
-					// SCIM-style error: { "errors": [ { "details": "..." } ] }
 					JSONArray errors = jsonObject.getJSONArray("errors");
 					if (errors.length() > 0) {
 						actualMessage = errors.getJSONObject(0).getString("details");
@@ -74,7 +86,6 @@ public class ApiValidation {
 
 			} else if (statusCode == 404) {
 				if (jsonObject != null && jsonObject.has("details")) {
-					// SCIM-style not-found error: { "status": 404, "details": "..." }
 					actualMessage = jsonObject.getString("details");
 					System.out.println("Error Message: " + actualMessage);
 				} else {
@@ -92,13 +103,17 @@ public class ApiValidation {
 				System.out.println("\nAnd the response is given below :\n" + body);
 			}
 
+			if (actualMessage != null) {
+				extentTest.info("Extracted Message: " + actualMessage);
+			}
+
 		} catch (Exception e) {
-			System.out.println(
-					"Error while parsing/validating response for status " + statusCode + ": " + e.getMessage());
+			extentTest.warning("Error while parsing response for status " + statusCode + ": " + e.getMessage());
+			System.out.println("Error while parsing/validating response for status " + statusCode + ": " + e.getMessage());
 			System.out.println("Raw response body:\n" + body);
 		}
 
-		// Assertions - only run when expected values are provided (overloaded call)
+		// --- Assertions ---
 		if (expectedStatusCode != null) {
 			Assert.assertEquals(statusCode, expectedStatusCode.intValue(),
 					"Status code mismatch! Expected: " + expectedStatusCode + ", Actual: " + statusCode);
