@@ -93,7 +93,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">13 methods,   13 passed</span>
+                    <span class="method-stats">14 methods,   14 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -120,6 +120,11 @@
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Suite" title="org.testing.TestScripts.CreateUserSync" class="method navigator-link" hash-for-method="createUserSyncSuccess">createUserSyncSuccess</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="org.testing.TestScripts.CreateUserSync" class="method navigator-link" hash-for-method="createUserSyncSuccessWithGroup">createUserSyncSuccessWithGroup</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -287,6 +292,13 @@
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
+                  <a name="createUserSyncSuccessWithGroup">
+                  </a> <!-- createUserSyncSuccessWithGroup -->
+                  <span class="method-name">createUserSyncSuccessWithGroup</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
                   <a name="createUserSyncUserAlreadyExist">
                   </a> <!-- createUserSyncUserAlreadyExist -->
                   <span class="method-name">createUserSyncUserAlreadyExist</span>
@@ -330,6 +342,7 @@
           &lt;include name=&quot;createUserSyncUserAlreadyExist&quot;/&gt;
           &lt;include name=&quot;createUserSyncMissedId&quot;/&gt;
           &lt;include name=&quot;createUserNoAuth&quot;/&gt;
+          &lt;include name=&quot;createUserSyncSuccessWithGroup&quot;/&gt;
         &lt;/methods&gt;
       &lt;/class&gt; &lt;!-- org.testing.TestScripts.CreateUserSync --&gt;
     &lt;/classes&gt;
@@ -371,64 +384,68 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(13);
+data.addRows(14);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'createUserSyncUserAlreadyExist')
 data.setCell(0, 2, 'org.testing.TestScripts.CreateUserSync')
-data.setCell(0, 3, 1519);
+data.setCell(0, 3, 1513);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'createUserSyncSuccess')
 data.setCell(1, 2, 'org.testing.TestScripts.CreateUserSync')
-data.setCell(1, 3, 1284);
+data.setCell(1, 3, 1213);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'generateAccessTokenWithValidCredentials')
-data.setCell(2, 2, 'org.testing.TestScripts.GenerateAccessToken')
-data.setCell(2, 3, 991);
+data.setCell(2, 1, 'createUserSyncSuccessWithGroup')
+data.setCell(2, 2, 'org.testing.TestScripts.CreateUserSync')
+data.setCell(2, 3, 1209);
 data.setCell(3, 0, 3)
 data.setCell(3, 1, 'getAllUsers')
 data.setCell(3, 2, 'org.testing.TestScripts.UserAPIs_GetUser')
-data.setCell(3, 3, 985);
+data.setCell(3, 3, 1054);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'createUserNoAuth')
-data.setCell(4, 2, 'org.testing.TestScripts.CreateUserSync')
-data.setCell(4, 3, 906);
+data.setCell(4, 1, 'generateAccessTokenWithValidCredentials')
+data.setCell(4, 2, 'org.testing.TestScripts.GenerateAccessToken')
+data.setCell(4, 3, 961);
 data.setCell(5, 0, 5)
-data.setCell(5, 1, 'generateAccessTokenWithInvalidPassword')
-data.setCell(5, 2, 'org.testing.TestScripts.GenerateAccessToken')
-data.setCell(5, 3, 585);
+data.setCell(5, 1, 'createUserNoAuth')
+data.setCell(5, 2, 'org.testing.TestScripts.CreateUserSync')
+data.setCell(5, 3, 890);
 data.setCell(6, 0, 6)
-data.setCell(6, 1, 'generateAccessTokenWithInvalidUserName')
+data.setCell(6, 1, 'generateAccessTokenWithInvalidPassword')
 data.setCell(6, 2, 'org.testing.TestScripts.GenerateAccessToken')
-data.setCell(6, 3, 461);
+data.setCell(6, 3, 573);
 data.setCell(7, 0, 7)
 data.setCell(7, 1, 'getSingleUser')
 data.setCell(7, 2, 'org.testing.TestScripts.UserAPIs_GetUser')
 data.setCell(7, 3, 460);
 data.setCell(8, 0, 8)
-data.setCell(8, 1, 'createUserSyncMissedId')
-data.setCell(8, 2, 'org.testing.TestScripts.CreateUserSync')
-data.setCell(8, 3, 367);
+data.setCell(8, 1, 'generateAccessTokenWithInvalidUserName')
+data.setCell(8, 2, 'org.testing.TestScripts.GenerateAccessToken')
+data.setCell(8, 3, 442);
 data.setCell(9, 0, 9)
 data.setCell(9, 1, 'getSingleUserNotExist')
 data.setCell(9, 2, 'org.testing.TestScripts.UserAPIs_GetUser')
-data.setCell(9, 3, 364);
+data.setCell(9, 3, 369);
 data.setCell(10, 0, 10)
-data.setCell(10, 1, 'createUserSyncExpiredAccessToken')
+data.setCell(10, 1, 'createUserSyncMissedId')
 data.setCell(10, 2, 'org.testing.TestScripts.CreateUserSync')
-data.setCell(10, 3, 324);
+data.setCell(10, 3, 344);
 data.setCell(11, 0, 11)
-data.setCell(11, 1, 'getAllUsers_ExpiredORInvalidAccessToken')
-data.setCell(11, 2, 'org.testing.TestScripts.UserAPIs_GetUser')
-data.setCell(11, 3, 313);
+data.setCell(11, 1, 'createUserSyncExpiredAccessToken')
+data.setCell(11, 2, 'org.testing.TestScripts.CreateUserSync')
+data.setCell(11, 3, 329);
 data.setCell(12, 0, 12)
 data.setCell(12, 1, 'getSingleUser_ExpiredOrInvalidAccessToken')
 data.setCell(12, 2, 'org.testing.TestScripts.UserAPIs_GetUser')
-data.setCell(12, 3, 308);
+data.setCell(12, 3, 320);
+data.setCell(13, 0, 13)
+data.setCell(13, 1, 'getAllUsers_ExpiredORInvalidAccessToken')
+data.setCell(13, 2, 'org.testing.TestScripts.UserAPIs_GetUser')
+data.setCell(13, 3, 313);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 8 seconds</span>
+              <span class="suite-total-time">Total running time: 9 seconds</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -464,68 +481,72 @@ return data;
               <div class="chronological-class-name">org.testing.TestScripts.GenerateAccessToken</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">generateAccessTokenWithValidCredentials</span>
-                <span class="method-start">8229 ms</span>
+                <span class="method-start">15201 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">generateAccessTokenWithInvalidUserName</span>
-                <span class="method-start">9225 ms</span>
+                <span class="method-start">16167 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">generateAccessTokenWithInvalidPassword</span>
-                <span class="method-start">9687 ms</span>
+                <span class="method-start">16610 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">org.testing.TestScripts.UserAPIs_GetUser</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">getAllUsers</span>
-                <span class="method-start">10274 ms</span>
+                <span class="method-start">17184 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">getAllUsers_ExpiredORInvalidAccessToken</span>
-                <span class="method-start">11260 ms</span>
+                <span class="method-start">18239 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">getSingleUser</span>
-                <span class="method-start">11573 ms</span>
+                <span class="method-start">18553 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">getSingleUser_ExpiredOrInvalidAccessToken</span>
-                <span class="method-start">12033 ms</span>
+                <span class="method-start">19014 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">getSingleUserNotExist</span>
-                <span class="method-start">12342 ms</span>
+                <span class="method-start">19335 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">org.testing.TestScripts.CreateUserSync</div> <!-- chronological-class-name -->
               <div class="test-method">
                 <span class="method-name">createUserSyncSuccess</span>
-                <span class="method-start">12708 ms</span>
+                <span class="method-start">19705 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">createUserSyncExpiredAccessToken</span>
-                <span class="method-start">13994 ms</span>
+                <span class="method-start">20920 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">createUserSyncUserAlreadyExist</span>
-                <span class="method-start">14320 ms</span>
+                <span class="method-start">21251 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">createUserSyncMissedId</span>
-                <span class="method-start">15840 ms</span>
+                <span class="method-start">22765 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">createUserNoAuth</span>
-                <span class="method-start">16208 ms</span>
+                <span class="method-start">23111 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">createUserSyncSuccessWithGroup</span>
+                <span class="method-start">24001 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">org.testing.Base.BaseClass</div> <!-- chronological-class-name -->
               <div class="configuration-suite after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">17146 ms</span>
+                <span class="method-start">25247 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

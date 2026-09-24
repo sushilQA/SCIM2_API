@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.testing.utilities.ApiValidation;
 import org.testing.utilities.AuthContext;
+import org.testing.utilities.ConfigContext;
 import org.testing.utilities.JsonTemplateReader;
 import org.testing.utilities.RandomNumberGenerator;
 
@@ -25,8 +26,31 @@ public class Create_User_Sync {
 		try {
 			Map<String, String> tokens = new HashMap<>();
 			tokens.put("{{userName}}", "SCIM" + RandomNumberGenerator.randomNumber());
+			ConfigContext.userId = "{{userName}}" ;
 			String jsonPayload = JsonTemplateReader.getJsonWithReplacedTokens(
 					"../SCIM2_API/src/test/java/org/testing/resources/CreateUserBody.json", tokens);
+
+			APIResponse response = request.post(URL + "/api/scim/v2/users",
+					RequestOptions.create().setHeader("Authorization", "Bearer " + AuthContext.accessToken)
+							.setHeader("Content-Type", "application/json").setData(jsonPayload));
+
+			apiValidation.apiValidation(response, extentTest, expectedStatusCode);
+
+		} catch (IOException e) {
+			System.out.println("createUserSyncSuccess failed: " + e.getMessage());
+			throw e;
+		}
+	}
+	
+	public void createUserSyncSuccessWithGroup(APIRequestContext request, String URL, ExtentTest extentTest,
+			int expectedStatusCode) throws IOException, InterruptedException {
+
+		System.out.println("\n ******************** Create User - Sync Success With Group ********************\n");
+		try {
+			Map<String, String> tokens = new HashMap<>();
+			tokens.put("{{userName}}", "SCIM" + RandomNumberGenerator.randomNumber());
+			String jsonPayload = JsonTemplateReader.getJsonWithReplacedTokens(
+					"../SCIM2_API/src/test/java/org/testing/resources/CreateUserGroupBody.json", tokens);
 
 			APIResponse response = request.post(URL + "/api/scim/v2/users",
 					RequestOptions.create().setHeader("Authorization", "Bearer " + AuthContext.accessToken)

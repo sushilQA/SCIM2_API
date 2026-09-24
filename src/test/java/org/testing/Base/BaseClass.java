@@ -19,6 +19,7 @@ public class BaseClass {
 	public void generateAccessTokenWithValidCredentials() throws IOException, InterruptedException, BiffException {
 		try {
 			ConfigContext.properties = LoadPropertiesFile.handlePropertyFile("../SCIM2_API/URI.properties");
+			ConfigContext.objectRepoProperties = LoadPropertiesFile.handlePropertyFile("../SCIM2_API/ObjectRepositery.properties");
 			RequestContext.playwright = Playwright.create();
 			RequestContext.request = RequestContext.playwright.request().newContext();
 			UserOAuth login = new UserOAuth();

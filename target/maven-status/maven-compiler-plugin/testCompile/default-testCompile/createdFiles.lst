@@ -8,12 +8,16 @@ org\testing\TestSteps\GetUsers.class
 org\testing\TestScripts\GenerateAccessToken.class
 org\testing\utilities\ReadEndPoints.class
 org\testing\TestScripts\UserAPIs_GetUser.class
+org\testing\TestSteps\LoginPage.class
+org\testing\utilities\BrowserContext.class
 org\testing\resources\UserData.class
 org\testing\utilities\GenerateExtentReports.class
 org\testing\utilities\RequestContext.class
 org\testing\TestSteps\UserOAuth.class
+org\testing\TestScripts\LenelProvisioningTests.class
 org\testing\Base\BaseClass.class
 org\testing\utilities\JsonTemplateReader.class
 org\testing\utilities\ApiValidation.class
+org\testing\TestSteps\LenelProvisioning.class
 org\testing\utilities\RandomNumberGenerator.class
 org\testing\utilities\LoadPropertiesFile.class

@@ -29,6 +29,7 @@ public class CreateUserSync {
 			throw e;
 		}
 	}
+	
 
 	@Test(enabled = true, priority = 10)
 	public void createUserSyncExpiredAccessToken() throws IOException, InterruptedException, BiffException {
@@ -82,6 +83,20 @@ public class CreateUserSync {
 			extentTest.log(Status.PASS, "TC13 - Create User - Sync Failed - No Auth Defined");
 		} catch (AssertionError | Exception e) {
 			extentTest.log(Status.FAIL, "TC13 - Create User - Sync Failed - No Auth Defined: " + e.getMessage());
+			throw e;
+		}
+	}
+	
+	@Test(enabled = true, priority = 14)
+	public void createUserSyncSuccessWithGroup() throws IOException, InterruptedException, BiffException {
+		ExtentReports extentReports = GenerateExtentReports.generateExtentReport();
+		ExtentTest extentTest = extentReports.createTest("Create User - Sync Success with Group");
+		try {
+			createUserSync.createUserSyncSuccessWithGroup(RequestContext.request,
+					ConfigContext.properties.getProperty("humana_dev"), extentTest, 201);
+			extentTest.log(Status.PASS, "TC14 - Create User - Sync Success with Group");
+		} catch (AssertionError | Exception e) {
+			extentTest.log(Status.FAIL, "TC14 - Create User - Sync Success with Group: " + e.getMessage());
 			throw e;
 		}
 	}

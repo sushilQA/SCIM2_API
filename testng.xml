@@ -29,6 +29,7 @@
 					<include name="createUserSyncUserAlreadyExist" />
 					<include name="createUserSyncMissedId" />
 					<include name="createUserNoAuth" />
+					<include name="createUserSyncSuccessWithGroup" />
 				</methods>
 
 			</class>

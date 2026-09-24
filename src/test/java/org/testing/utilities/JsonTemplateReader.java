@@ -36,5 +36,16 @@ public class JsonTemplateReader {
 			throw e;
 		}
 	}
+	
+	public static String getJsonBody(String filePath) throws IOException {
+		try {
+			String content = Files.readString(Paths.get(filePath));
+			return content;
+
+		} catch (IOException e) {
+			System.out.println("getJsonWithReplacedToken failed for file '" + filePath + "': " + e.getMessage());
+			throw e;
+		}
+	}
 
 }
