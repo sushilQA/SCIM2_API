@@ -55,8 +55,7 @@ public class GetUsers {
 		System.out.println("\n ******************** Get Single User ********************\n");
 		try {
 			APIResponse response = request.get(URL + "/api/scim/v2/users/" + userId,
-					RequestOptions.create()
-							.setHeader("Authorization", "Bearer " + AuthContext.accessToken));
+					RequestOptions.create().setHeader("Authorization", "Bearer " + AuthContext.accessToken));
 
 			apiValidation.apiValidation(response, extentTest, expectedStatusCode);
 
@@ -73,8 +72,7 @@ public class GetUsers {
 				"\n ******************** Get Single User With Expired Or Invalid Access Token ********************\n");
 		try {
 			APIResponse response = request.get(URL + "/api/scim/v2/users/" + userId,
-					RequestOptions.create()
-							.setHeader("Authorization", "Bearer " + AuthContext.expiredToken));
+					RequestOptions.create().setHeader("Authorization", "Bearer " + AuthContext.expiredToken));
 
 			apiValidation.apiValidation(response, extentTest, expectedStatusCode);
 
@@ -90,13 +88,27 @@ public class GetUsers {
 		System.out.println("\n ******************** Get Single User - User Not Exist ********************\n");
 		try {
 			APIResponse response = request.get(URL + "/api/scim/v2/users/" + userId,
-					RequestOptions.create()
-							.setHeader("Authorization", "Bearer " + AuthContext.accessToken));
+					RequestOptions.create().setHeader("Authorization", "Bearer " + AuthContext.accessToken));
 
 			apiValidation.apiValidation(response, extentTest, expectedStatusCode, expectedMessage);
 
 		} catch (RuntimeException e) {
 			System.out.println("userNotExist failed: " + e.getMessage());
+			throw e;
+		}
+	}
+
+	// Plain fetch - no assertion/logging, used as a precondition step in other
+	// flows (e.g. Update User)
+	public APIResponse fetchUser(APIRequestContext request, String URL, String userId)
+			throws IOException, InterruptedException {
+
+		try {
+			return request.get(URL + "/api/scim/v2/users/" + userId,
+					RequestOptions.create().setHeader("Authorization", "Bearer " + AuthContext.accessToken));
+
+		} catch (RuntimeException e) {
+			System.out.println("fetchUser failed: " + e.getMessage());
 			throw e;
 		}
 	}

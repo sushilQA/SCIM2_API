@@ -3,11 +3,13 @@ C:\Users\sushil.k\eclipse-workspace\SCIM2_API\src\test\java\org\testing\resource
 C:\Users\sushil.k\eclipse-workspace\SCIM2_API\src\test\java\org\testing\TestScripts\CreateUserSync.java
 C:\Users\sushil.k\eclipse-workspace\SCIM2_API\src\test\java\org\testing\TestScripts\GenerateAccessToken.java
 C:\Users\sushil.k\eclipse-workspace\SCIM2_API\src\test\java\org\testing\TestScripts\LenelProvisioningTests.java
+C:\Users\sushil.k\eclipse-workspace\SCIM2_API\src\test\java\org\testing\TestScripts\UpdateUserSync.java
 C:\Users\sushil.k\eclipse-workspace\SCIM2_API\src\test\java\org\testing\TestScripts\UserAPIs_GetUser.java
 C:\Users\sushil.k\eclipse-workspace\SCIM2_API\src\test\java\org\testing\TestSteps\Create_User_Sync.java
 C:\Users\sushil.k\eclipse-workspace\SCIM2_API\src\test\java\org\testing\TestSteps\GetUsers.java
 C:\Users\sushil.k\eclipse-workspace\SCIM2_API\src\test\java\org\testing\TestSteps\LenelProvisioning.java
 C:\Users\sushil.k\eclipse-workspace\SCIM2_API\src\test\java\org\testing\TestSteps\LoginPage.java
+C:\Users\sushil.k\eclipse-workspace\SCIM2_API\src\test\java\org\testing\TestSteps\Update_User_Sync.java
 C:\Users\sushil.k\eclipse-workspace\SCIM2_API\src\test\java\org\testing\TestSteps\UserOAuth.java
 C:\Users\sushil.k\eclipse-workspace\SCIM2_API\src\test\java\org\testing\utilities\ApiValidation.java
 C:\Users\sushil.k\eclipse-workspace\SCIM2_API\src\test\java\org\testing\utilities\AuthContext.java

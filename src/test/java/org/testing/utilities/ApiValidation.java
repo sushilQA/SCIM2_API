@@ -1,10 +1,14 @@
 package org.testing.utilities;
 
+import java.util.Map;
+import java.util.Objects;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.testng.Assert;
 
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.CodeLanguage;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.microsoft.playwright.APIResponse;
@@ -125,5 +129,50 @@ public class ApiValidation {
 			Assert.assertTrue(actualMessage.contains(expectedMessage), "Message mismatch! Expected to contain: '"
 					+ expectedMessage + "', Actual: '" + actualMessage + "'");
 		}
+	}
+
+	// Compares an OLD and NEW attribute snapshot (from UserData.snapshot()) and logs only the
+	// fields that actually changed, as an HTML table in the Extent report plus a console dump.
+	public void logAttributeChanges(ExtentTest extentTest, Map<String, String> oldValues, Map<String, String> newValues) {
+		StringBuilder table = new StringBuilder(
+			"<table style='border-collapse:collapse;width:100%'>"
+			+ "<tr><th style='border:1px solid #ccc;padding:4px'>Attribute</th>"
+			+ "<th style='border:1px solid #ccc;padding:4px'>Old Value</th>"
+			+ "<th style='border:1px solid #ccc;padding:4px'>New Value</th></tr>");
+
+		int changedCount = 0;
+		for (String key : newValues.keySet()) {
+			String oldVal = oldValues.get(key);
+			String newVal = newValues.get(key);
+			if (!Objects.equals(oldVal, newVal)) {
+				changedCount++;
+				table.append("<tr>")
+					.append("<td style='border:1px solid #ccc;padding:4px'>").append(key).append("</td>")
+					.append("<td style='border:1px solid #ccc;padding:4px'>").append(display(oldVal)).append("</td>")
+					.append("<td style='border:1px solid #ccc;padding:4px;font-weight:bold'>").append(display(newVal)).append("</td>")
+					.append("</tr>");
+			}
+		}
+		table.append("</table>");
+
+		if (changedCount == 0) {
+			extentTest.log(Status.INFO, "No attribute changes detected");
+		} else {
+			extentTest.log(Status.INFO, "Attributes changed: " + changedCount);
+			extentTest.log(Status.INFO, table.toString());
+		}
+
+		System.out.println("----- Attribute changes -----");
+		for (String key : newValues.keySet()) {
+			String oldVal = oldValues.get(key);
+			String newVal = newValues.get(key);
+			if (!Objects.equals(oldVal, newVal)) {
+				System.out.println(key + " : \"" + display(oldVal) + "\" -> \"" + display(newVal) + "\"");
+			}
+		}
+	}
+
+	private String display(String value) {
+		return value == null ? "null" : value;
 	}
 }
