@@ -17,7 +17,7 @@ public class UserAPIs_GetUser {
 
 	GetUsers getUsers = new GetUsers();
 
-	@Test(enabled = true, priority = 4)
+	@Test(enabled = true, priority = 4, groups = {"getUsers", "positive"})
 	public void getAllUsers() throws IOException, InterruptedException, BiffException {
 		ExtentReports extentReports = GenerateExtentReports.generateExtentReport();
 		ExtentTest extentTest = extentReports.createTest("\nGet All Users");
@@ -31,7 +31,7 @@ public class UserAPIs_GetUser {
 		}
 	}
 
-	@Test(enabled = true, priority = 5)
+	@Test(enabled = true, priority = 5, groups = {"getUsers", "negative"})
 	public void getAllUsers_ExpiredORInvalidAccessToken() throws IOException, InterruptedException, BiffException {
 		ExtentReports extentReports = GenerateExtentReports.generateExtentReport();
 		ExtentTest extentTest = extentReports.createTest("\nGet All Users with Expired OR Invalid Access Token");
@@ -45,7 +45,7 @@ public class UserAPIs_GetUser {
 		}
 	}
 
-	@Test(enabled = true, priority = 6)
+	@Test(enabled = true, priority = 6, groups = {"getUsers", "positive"})
 	public void getSingleUser() throws IOException, InterruptedException, BiffException {
 		ExtentReports extentReports = GenerateExtentReports.generateExtentReport();
 		ExtentTest extentTest = extentReports.createTest("\nGet Single User");
@@ -59,7 +59,7 @@ public class UserAPIs_GetUser {
 		}
 	}
 
-	@Test(enabled = true, priority = 7)
+	@Test(enabled = true, priority = 7, groups = {"getUsers", "negative"})
 	public void getSingleUser_ExpiredOrInvalidAccessToken() throws IOException, InterruptedException, BiffException {
 		ExtentReports extentReports = GenerateExtentReports.generateExtentReport();
 		ExtentTest extentTest = extentReports.createTest("\nGet Single User with Expired OR Invalid Access Token");
@@ -73,7 +73,7 @@ public class UserAPIs_GetUser {
 		}
 	}
 
-	@Test(enabled = true, priority = 8)
+	@Test(enabled = true, priority = 8, groups = {"getUsers", "negative"})
 	public void getSingleUserNotExist() throws IOException, InterruptedException, BiffException {
 		ExtentReports extentReports = GenerateExtentReports.generateExtentReport();
 		ExtentTest extentTest = extentReports.createTest("\nGet Single User - User Not Exist");

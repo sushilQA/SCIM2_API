@@ -2,47 +2,20 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Suite">
 	<test name="Test">
+		<groups>
+			<run>
+				<include name="auth" />
+				<include name="getUsers" />
+				<include name="createUser" />			
+				<include name="updateUser" />
+			</run>
+		</groups>
 		<classes>
-			<class name="org.testing.Base.BaseClass">
-			</class>
-			<class name="org.testing.TestScripts.GenerateAccessToken">
-				<methods>
-					<exclude name="generateAccessTokenWithValidCredentials" />
-					<exclude name="generateAccessTokenWithInvalidUserName" />
-					<exclude name="generateAccessTokenWithInvalidPassword" />
-				</methods>
-			</class>
-			<class name="org.testing.TestScripts.UserAPIs_GetUser">
-				<methods>
-					<exclude name="getAllUsers" />
-					<exclude name="getAllUsers_ExpiredORInvalidAccessToken" />
-					<exclude name="getSingleUser" />
-					<exclude name="getSingleUser_ExpiredOrInvalidAccessToken" />
-					<exclude name="getSingleUserNotExist" />
-				</methods>
-
-			</class>
-			<class name="org.testing.TestScripts.CreateUserSync">
-				<methods>
-					<exclude name="createUserSyncSuccess" />
-					<exclude name="createUserSyncExpiredAccessToken" />
-					<exclude name="createUserSyncUserAlreadyExist" />
-					<exclude name="createUserSyncMissedId" />
-					<exclude name="createUserNoAuth" />
-					<exclude name="createUserSyncSuccessWithGroup" />
-				</methods>
-
-			</class>
-			
-			<class name="org.testing.TestScripts.UpdateUserSync">
-				<methods>
-					<include name="updateUserSyncModify" />
-					<include name="updateUserSyncUserNotExist" />
-				</methods>
-
-			</class>
+			<class name="org.testing.Base.BaseClass" />
+			<class name="org.testing.TestScripts.GenerateAccessToken" />
+			<class name="org.testing.TestScripts.UserAPIs_GetUser" />
+			<class name="org.testing.TestScripts.CreateUserSync" />
+			<class name="org.testing.TestScripts.UpdateUserSync" />
 		</classes>
-	</test> <!--
-	Test -->
-</suite> <!--
-Suite -->
+	</test>
+</suite>

@@ -16,7 +16,7 @@ public class CreateUserSync {
 
 	Create_User_Sync createUserSync = new Create_User_Sync();
 
-	@Test(enabled = true, priority = 9)
+	@Test(enabled = true, priority = 9, groups = {"createUser", "positive"})
 	public void createUserSyncSuccess() throws IOException, InterruptedException, BiffException {
 		ExtentReports extentReports = GenerateExtentReports.generateExtentReport();
 		ExtentTest extentTest = extentReports.createTest("Create User Sync");
@@ -29,9 +29,8 @@ public class CreateUserSync {
 			throw e;
 		}
 	}
-	
 
-	@Test(enabled = true, priority = 10)
+	@Test(enabled = true, priority = 10, groups = {"createUser", "negative"})
 	public void createUserSyncExpiredAccessToken() throws IOException, InterruptedException, BiffException {
 		ExtentReports extentReports = GenerateExtentReports.generateExtentReport();
 		ExtentTest extentTest = extentReports.createTest("Create User - Sync Failed - Invalid Or Expired Access Token");
@@ -45,7 +44,7 @@ public class CreateUserSync {
 		}
 	}
 
-	@Test(enabled = true, priority = 11)
+	@Test(enabled = true, priority = 11, groups = {"createUser", "negative"})
 	public void createUserSyncUserAlreadyExist() throws IOException, InterruptedException, BiffException {
 		ExtentReports extentReports = GenerateExtentReports.generateExtentReport();
 		ExtentTest extentTest = extentReports.createTest("Create User - Sync Failed - User Already Exist");
@@ -59,7 +58,7 @@ public class CreateUserSync {
 		}
 	}
 
-	@Test(enabled = true, priority = 12)
+	@Test(enabled = true, priority = 12, groups = {"createUser", "negative"})
 	public void createUserSyncMissedId() throws IOException, InterruptedException, BiffException {
 		ExtentReports extentReports = GenerateExtentReports.generateExtentReport();
 		ExtentTest extentTest = extentReports.createTest("Create User - Sync Failed - Missed Id in Payload");
@@ -72,8 +71,8 @@ public class CreateUserSync {
 			throw e;
 		}
 	}
-	
-	@Test(enabled = true, priority = 13)
+
+	@Test(enabled = true, priority = 13, groups = {"createUser", "negative"})
 	public void createUserNoAuth() throws IOException, InterruptedException, BiffException {
 		ExtentReports extentReports = GenerateExtentReports.generateExtentReport();
 		ExtentTest extentTest = extentReports.createTest("Create User - Sync Failed - No Auth Defined");
@@ -86,8 +85,8 @@ public class CreateUserSync {
 			throw e;
 		}
 	}
-	
-	@Test(enabled = true, priority = 14)
+
+	@Test(enabled = true, priority = 14, groups = {"createUser", "positive"})
 	public void createUserSyncSuccessWithGroup() throws IOException, InterruptedException, BiffException {
 		ExtentReports extentReports = GenerateExtentReports.generateExtentReport();
 		ExtentTest extentTest = extentReports.createTest("Create User - Sync Success with Group");

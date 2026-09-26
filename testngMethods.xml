@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+	<test name="Test">
+		<classes>
+			<class name="org.testing.Base.BaseClass">
+			</class>
+			<class name="org.testing.TestScripts.GenerateAccessToken">
+				<methods>
+					<include name="generateAccessTokenWithValidCredentials" />
+					<include name="generateAccessTokenWithInvalidUserName" />
+					<include name="generateAccessTokenWithInvalidPassword" />
+				</methods>
+			</class>
+			<class name="org.testing.TestScripts.UserAPIs_GetUser">
+				<methods>
+					<include name="getAllUsers" />
+					<include name="getAllUsers_ExpiredORInvalidAccessToken" />
+					<include name="getSingleUser" />
+					<include name="getSingleUser_ExpiredOrInvalidAccessToken" />
+					<include name="getSingleUserNotExist" />
+				</methods>
+
+			</class>
+			<class name="org.testing.TestScripts.CreateUserSync">
+				<methods>
+					<include name="createUserSyncSuccess" />
+					<include name="createUserSyncExpiredAccessToken" />
+					<include name="createUserSyncUserAlreadyExist" />
+					<include name="createUserSyncMissedId" />
+					<include name="createUserNoAuth" />
+					<include name="createUserSyncSuccessWithGroup" />
+				</methods>
+
+			</class>
+			
+			<class name="org.testing.TestScripts.UpdateUserSync">
+				<methods>
+					<include name="updateUserSyncModify" />
+					<include name="updateUserSyncUserNotExist" />
+				</methods>
+
+			</class>
+		</classes>
+	</test> <!--
+	Test -->
+</suite> <!--
+Suite -->

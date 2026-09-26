@@ -15,7 +15,7 @@ import jxl.read.biff.BiffException;
 
 public class BaseClass {
 
-	@BeforeSuite(enabled = true)
+	@BeforeSuite(enabled = true, alwaysRun = true)
 	public void generateAccessTokenWithValidCredentials() throws IOException, InterruptedException, BiffException {
 		try {
 			ConfigContext.properties = LoadPropertiesFile.handlePropertyFile("../SCIM2_API/URI.properties");
@@ -37,7 +37,7 @@ public class BaseClass {
 		}
 	}
 
-	@AfterSuite(enabled = true)
+	@AfterSuite(enabled = true, alwaysRun = true)
 	public void tearDown() {
 		try {
 			if (RequestContext.request != null) {

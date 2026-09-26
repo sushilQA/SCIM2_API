@@ -1,27 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="14" total="16" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="16" passed="16" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-09-26T21:45:15 IST" name="Suite" finished-at="2026-09-26T21:45:18 IST" duration-ms="2175">
+  <suite started-at="2026-09-26T22:40:52 IST" name="Suite" finished-at="2026-09-26T22:41:04 IST" duration-ms="11430">
     <groups>
+      <group name="negative">
+        <method signature="GenerateAccessToken.generateAccessTokenWithInvalidUserName()[pri:2, instance:org.testing.TestScripts.GenerateAccessToken@36b4fe2a]" name="generateAccessTokenWithInvalidUserName" class="org.testing.TestScripts.GenerateAccessToken"/>
+        <method signature="GenerateAccessToken.generateAccessTokenWithInvalidPassword()[pri:3, instance:org.testing.TestScripts.GenerateAccessToken@36b4fe2a]" name="generateAccessTokenWithInvalidPassword" class="org.testing.TestScripts.GenerateAccessToken"/>
+        <method signature="UserAPIs_GetUser.getAllUsers_ExpiredORInvalidAccessToken()[pri:5, instance:org.testing.TestScripts.UserAPIs_GetUser@ba54932]" name="getAllUsers_ExpiredORInvalidAccessToken" class="org.testing.TestScripts.UserAPIs_GetUser"/>
+        <method signature="UserAPIs_GetUser.getSingleUser_ExpiredOrInvalidAccessToken()[pri:7, instance:org.testing.TestScripts.UserAPIs_GetUser@ba54932]" name="getSingleUser_ExpiredOrInvalidAccessToken" class="org.testing.TestScripts.UserAPIs_GetUser"/>
+        <method signature="UserAPIs_GetUser.getSingleUserNotExist()[pri:8, instance:org.testing.TestScripts.UserAPIs_GetUser@ba54932]" name="getSingleUserNotExist" class="org.testing.TestScripts.UserAPIs_GetUser"/>
+        <method signature="CreateUserSync.createUserSyncExpiredAccessToken()[pri:10, instance:org.testing.TestScripts.CreateUserSync@3943a2be]" name="createUserSyncExpiredAccessToken" class="org.testing.TestScripts.CreateUserSync"/>
+        <method signature="CreateUserSync.createUserSyncUserAlreadyExist()[pri:11, instance:org.testing.TestScripts.CreateUserSync@3943a2be]" name="createUserSyncUserAlreadyExist" class="org.testing.TestScripts.CreateUserSync"/>
+        <method signature="CreateUserSync.createUserSyncMissedId()[pri:12, instance:org.testing.TestScripts.CreateUserSync@3943a2be]" name="createUserSyncMissedId" class="org.testing.TestScripts.CreateUserSync"/>
+        <method signature="CreateUserSync.createUserNoAuth()[pri:13, instance:org.testing.TestScripts.CreateUserSync@3943a2be]" name="createUserNoAuth" class="org.testing.TestScripts.CreateUserSync"/>
+        <method signature="UpdateUserSync.updateUserSyncUserNotExist()[pri:16, instance:org.testing.TestScripts.UpdateUserSync@157853da]" name="updateUserSyncUserNotExist" class="org.testing.TestScripts.UpdateUserSync"/>
+      </group> <!-- negative -->
+      <group name="auth">
+        <method signature="GenerateAccessToken.generateAccessTokenWithValidCredentials()[pri:1, instance:org.testing.TestScripts.GenerateAccessToken@36b4fe2a]" name="generateAccessTokenWithValidCredentials" class="org.testing.TestScripts.GenerateAccessToken"/>
+        <method signature="GenerateAccessToken.generateAccessTokenWithInvalidUserName()[pri:2, instance:org.testing.TestScripts.GenerateAccessToken@36b4fe2a]" name="generateAccessTokenWithInvalidUserName" class="org.testing.TestScripts.GenerateAccessToken"/>
+        <method signature="GenerateAccessToken.generateAccessTokenWithInvalidPassword()[pri:3, instance:org.testing.TestScripts.GenerateAccessToken@36b4fe2a]" name="generateAccessTokenWithInvalidPassword" class="org.testing.TestScripts.GenerateAccessToken"/>
+      </group> <!-- auth -->
+      <group name="getUsers">
+        <method signature="UserAPIs_GetUser.getAllUsers()[pri:4, instance:org.testing.TestScripts.UserAPIs_GetUser@ba54932]" name="getAllUsers" class="org.testing.TestScripts.UserAPIs_GetUser"/>
+        <method signature="UserAPIs_GetUser.getAllUsers_ExpiredORInvalidAccessToken()[pri:5, instance:org.testing.TestScripts.UserAPIs_GetUser@ba54932]" name="getAllUsers_ExpiredORInvalidAccessToken" class="org.testing.TestScripts.UserAPIs_GetUser"/>
+        <method signature="UserAPIs_GetUser.getSingleUser()[pri:6, instance:org.testing.TestScripts.UserAPIs_GetUser@ba54932]" name="getSingleUser" class="org.testing.TestScripts.UserAPIs_GetUser"/>
+        <method signature="UserAPIs_GetUser.getSingleUser_ExpiredOrInvalidAccessToken()[pri:7, instance:org.testing.TestScripts.UserAPIs_GetUser@ba54932]" name="getSingleUser_ExpiredOrInvalidAccessToken" class="org.testing.TestScripts.UserAPIs_GetUser"/>
+        <method signature="UserAPIs_GetUser.getSingleUserNotExist()[pri:8, instance:org.testing.TestScripts.UserAPIs_GetUser@ba54932]" name="getSingleUserNotExist" class="org.testing.TestScripts.UserAPIs_GetUser"/>
+      </group> <!-- getUsers -->
+      <group name="updateUser">
+        <method signature="UpdateUserSync.updateUserSyncModify()[pri:15, instance:org.testing.TestScripts.UpdateUserSync@157853da]" name="updateUserSyncModify" class="org.testing.TestScripts.UpdateUserSync"/>
+        <method signature="UpdateUserSync.updateUserSyncUserNotExist()[pri:16, instance:org.testing.TestScripts.UpdateUserSync@157853da]" name="updateUserSyncUserNotExist" class="org.testing.TestScripts.UpdateUserSync"/>
+      </group> <!-- updateUser -->
+      <group name="createUser">
+        <method signature="CreateUserSync.createUserSyncSuccess()[pri:9, instance:org.testing.TestScripts.CreateUserSync@3943a2be]" name="createUserSyncSuccess" class="org.testing.TestScripts.CreateUserSync"/>
+        <method signature="CreateUserSync.createUserSyncExpiredAccessToken()[pri:10, instance:org.testing.TestScripts.CreateUserSync@3943a2be]" name="createUserSyncExpiredAccessToken" class="org.testing.TestScripts.CreateUserSync"/>
+        <method signature="CreateUserSync.createUserSyncUserAlreadyExist()[pri:11, instance:org.testing.TestScripts.CreateUserSync@3943a2be]" name="createUserSyncUserAlreadyExist" class="org.testing.TestScripts.CreateUserSync"/>
+        <method signature="CreateUserSync.createUserSyncMissedId()[pri:12, instance:org.testing.TestScripts.CreateUserSync@3943a2be]" name="createUserSyncMissedId" class="org.testing.TestScripts.CreateUserSync"/>
+        <method signature="CreateUserSync.createUserNoAuth()[pri:13, instance:org.testing.TestScripts.CreateUserSync@3943a2be]" name="createUserNoAuth" class="org.testing.TestScripts.CreateUserSync"/>
+        <method signature="CreateUserSync.createUserSyncSuccessWithGroup()[pri:14, instance:org.testing.TestScripts.CreateUserSync@3943a2be]" name="createUserSyncSuccessWithGroup" class="org.testing.TestScripts.CreateUserSync"/>
+      </group> <!-- createUser -->
+      <group name="positive">
+        <method signature="GenerateAccessToken.generateAccessTokenWithValidCredentials()[pri:1, instance:org.testing.TestScripts.GenerateAccessToken@36b4fe2a]" name="generateAccessTokenWithValidCredentials" class="org.testing.TestScripts.GenerateAccessToken"/>
+        <method signature="UserAPIs_GetUser.getAllUsers()[pri:4, instance:org.testing.TestScripts.UserAPIs_GetUser@ba54932]" name="getAllUsers" class="org.testing.TestScripts.UserAPIs_GetUser"/>
+        <method signature="UserAPIs_GetUser.getSingleUser()[pri:6, instance:org.testing.TestScripts.UserAPIs_GetUser@ba54932]" name="getSingleUser" class="org.testing.TestScripts.UserAPIs_GetUser"/>
+        <method signature="CreateUserSync.createUserSyncSuccess()[pri:9, instance:org.testing.TestScripts.CreateUserSync@3943a2be]" name="createUserSyncSuccess" class="org.testing.TestScripts.CreateUserSync"/>
+        <method signature="CreateUserSync.createUserSyncSuccessWithGroup()[pri:14, instance:org.testing.TestScripts.CreateUserSync@3943a2be]" name="createUserSyncSuccessWithGroup" class="org.testing.TestScripts.CreateUserSync"/>
+        <method signature="UpdateUserSync.updateUserSyncModify()[pri:15, instance:org.testing.TestScripts.UpdateUserSync@157853da]" name="updateUserSyncModify" class="org.testing.TestScripts.UpdateUserSync"/>
+      </group> <!-- positive -->
     </groups>
-    <test started-at="2026-09-26T21:45:15 IST" name="Test" finished-at="2026-09-26T21:45:18 IST" duration-ms="2175">
+    <test started-at="2026-09-26T22:40:52 IST" name="Test" finished-at="2026-09-26T22:41:04 IST" duration-ms="11430">
       <class name="org.testing.TestScripts.UpdateUserSync">
-        <test-method signature="updateUserSyncModify()[pri:15, instance:org.testing.TestScripts.UpdateUserSync@36d585c]" started-at="2026-09-26T21:45:15 IST" name="updateUserSyncModify" finished-at="2026-09-26T21:45:17 IST" duration-ms="1800" status="PASS">
+        <test-method signature="updateUserSyncModify()[pri:15, instance:org.testing.TestScripts.UpdateUserSync@157853da]" started-at="2026-09-26T22:41:02 IST" name="updateUserSyncModify" finished-at="2026-09-26T22:41:03 IST" duration-ms="1512" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- updateUserSyncModify -->
-        <test-method signature="updateUserSyncUserNotExist()[pri:16, instance:org.testing.TestScripts.UpdateUserSync@36d585c]" started-at="2026-09-26T21:45:17 IST" name="updateUserSyncUserNotExist" finished-at="2026-09-26T21:45:18 IST" duration-ms="350" status="PASS">
+        <test-method signature="updateUserSyncUserNotExist()[pri:16, instance:org.testing.TestScripts.UpdateUserSync@157853da]" started-at="2026-09-26T22:41:03 IST" name="updateUserSyncUserNotExist" finished-at="2026-09-26T22:41:04 IST" duration-ms="333" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- updateUserSyncUserNotExist -->
       </class> <!-- org.testing.TestScripts.UpdateUserSync -->
-      <class name="org.testing.Base.BaseClass">
-        <test-method is-config="true" signature="generateAccessTokenWithValidCredentials()[pri:0, instance:org.testing.Base.BaseClass@60015ef5]" started-at="2026-09-26T21:45:07 IST" name="generateAccessTokenWithValidCredentials" finished-at="2026-09-26T21:45:15 IST" duration-ms="8086" status="PASS">
+      <class name="org.testing.TestScripts.GenerateAccessToken">
+        <test-method signature="generateAccessTokenWithValidCredentials()[pri:1, instance:org.testing.TestScripts.GenerateAccessToken@36b4fe2a]" started-at="2026-09-26T22:40:52 IST" name="generateAccessTokenWithValidCredentials" finished-at="2026-09-26T22:40:53 IST" duration-ms="1276" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- generateAccessTokenWithValidCredentials -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:org.testing.Base.BaseClass@60015ef5]" started-at="2026-09-26T21:45:18 IST" name="tearDown" finished-at="2026-09-26T21:45:18 IST" duration-ms="162" status="PASS">
+        <test-method signature="generateAccessTokenWithInvalidUserName()[pri:2, instance:org.testing.TestScripts.GenerateAccessToken@36b4fe2a]" started-at="2026-09-26T22:40:53 IST" name="generateAccessTokenWithInvalidUserName" finished-at="2026-09-26T22:40:54 IST" duration-ms="432" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- generateAccessTokenWithInvalidUserName -->
+        <test-method signature="generateAccessTokenWithInvalidPassword()[pri:3, instance:org.testing.TestScripts.GenerateAccessToken@36b4fe2a]" started-at="2026-09-26T22:40:54 IST" name="generateAccessTokenWithInvalidPassword" finished-at="2026-09-26T22:40:54 IST" duration-ms="533" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- generateAccessTokenWithInvalidPassword -->
+      </class> <!-- org.testing.TestScripts.GenerateAccessToken -->
+      <class name="org.testing.TestScripts.UserAPIs_GetUser">
+        <test-method signature="getAllUsers()[pri:4, instance:org.testing.TestScripts.UserAPIs_GetUser@ba54932]" started-at="2026-09-26T22:40:54 IST" name="getAllUsers" finished-at="2026-09-26T22:40:55 IST" duration-ms="846" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getAllUsers -->
+        <test-method signature="getAllUsers_ExpiredORInvalidAccessToken()[pri:5, instance:org.testing.TestScripts.UserAPIs_GetUser@ba54932]" started-at="2026-09-26T22:40:55 IST" name="getAllUsers_ExpiredORInvalidAccessToken" finished-at="2026-09-26T22:40:55 IST" duration-ms="257" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getAllUsers_ExpiredORInvalidAccessToken -->
+        <test-method signature="getSingleUser()[pri:6, instance:org.testing.TestScripts.UserAPIs_GetUser@ba54932]" started-at="2026-09-26T22:40:55 IST" name="getSingleUser" finished-at="2026-09-26T22:40:56 IST" duration-ms="377" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getSingleUser -->
+        <test-method signature="getSingleUser_ExpiredOrInvalidAccessToken()[pri:7, instance:org.testing.TestScripts.UserAPIs_GetUser@ba54932]" started-at="2026-09-26T22:40:56 IST" name="getSingleUser_ExpiredOrInvalidAccessToken" finished-at="2026-09-26T22:40:56 IST" duration-ms="267" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getSingleUser_ExpiredOrInvalidAccessToken -->
+        <test-method signature="getSingleUserNotExist()[pri:8, instance:org.testing.TestScripts.UserAPIs_GetUser@ba54932]" started-at="2026-09-26T22:40:56 IST" name="getSingleUserNotExist" finished-at="2026-09-26T22:40:56 IST" duration-ms="307" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- getSingleUserNotExist -->
+      </class> <!-- org.testing.TestScripts.UserAPIs_GetUser -->
+      <class name="org.testing.TestScripts.CreateUserSync">
+        <test-method signature="createUserSyncSuccess()[pri:9, instance:org.testing.TestScripts.CreateUserSync@3943a2be]" started-at="2026-09-26T22:40:56 IST" name="createUserSyncSuccess" finished-at="2026-09-26T22:40:58 IST" duration-ms="1137" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createUserSyncSuccess -->
+        <test-method signature="createUserSyncExpiredAccessToken()[pri:10, instance:org.testing.TestScripts.CreateUserSync@3943a2be]" started-at="2026-09-26T22:40:58 IST" name="createUserSyncExpiredAccessToken" finished-at="2026-09-26T22:40:58 IST" duration-ms="323" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createUserSyncExpiredAccessToken -->
+        <test-method signature="createUserSyncUserAlreadyExist()[pri:11, instance:org.testing.TestScripts.CreateUserSync@3943a2be]" started-at="2026-09-26T22:40:58 IST" name="createUserSyncUserAlreadyExist" finished-at="2026-09-26T22:41:00 IST" duration-ms="1519" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createUserSyncUserAlreadyExist -->
+        <test-method signature="createUserSyncMissedId()[pri:12, instance:org.testing.TestScripts.CreateUserSync@3943a2be]" started-at="2026-09-26T22:41:00 IST" name="createUserSyncMissedId" finished-at="2026-09-26T22:41:00 IST" duration-ms="268" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createUserSyncMissedId -->
+        <test-method signature="createUserNoAuth()[pri:13, instance:org.testing.TestScripts.CreateUserSync@3943a2be]" started-at="2026-09-26T22:41:00 IST" name="createUserNoAuth" finished-at="2026-09-26T22:41:01 IST" duration-ms="808" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createUserNoAuth -->
+        <test-method signature="createUserSyncSuccessWithGroup()[pri:14, instance:org.testing.TestScripts.CreateUserSync@3943a2be]" started-at="2026-09-26T22:41:01 IST" name="createUserSyncSuccessWithGroup" finished-at="2026-09-26T22:41:02 IST" duration-ms="1069" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createUserSyncSuccessWithGroup -->
+      </class> <!-- org.testing.TestScripts.CreateUserSync -->
+      <class name="org.testing.Base.BaseClass">
+        <test-method is-config="true" signature="generateAccessTokenWithValidCredentials()[pri:0, instance:org.testing.Base.BaseClass@fd07cbb]" started-at="2026-09-26T22:40:41 IST" name="generateAccessTokenWithValidCredentials" finished-at="2026-09-26T22:40:52 IST" duration-ms="10907" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- generateAccessTokenWithValidCredentials -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:org.testing.Base.BaseClass@fd07cbb]" started-at="2026-09-26T22:41:04 IST" name="tearDown" finished-at="2026-09-26T22:41:04 IST" duration-ms="380" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

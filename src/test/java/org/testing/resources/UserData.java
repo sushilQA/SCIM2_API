@@ -22,8 +22,11 @@ public class UserData {
 	private String familyName;
 	private String middleName;
 
-	// Generic map so ANY customProperties/extension attribute can be set:
-	// locationCode, employmentStatus, userType, workLocation, etc.
+	// Attributes that sit directly under UserExtension, as siblings of customProperties -
+	// e.g. workLocation (Transfer), employmentStatus (Offboarding/Rehire), userType (Conversion), validFrom, validTo.
+	private final Map<String, Object> extensionAttributes = new LinkedHashMap<>();
+
+	// Attributes nested inside UserExtension.customProperties - e.g. locationCode, supervisorNumber, etc.
 	private final Map<String, Object> customProperties = new LinkedHashMap<>();
 
 	// default user, so each test only changes what it needs (used for CREATE tests - no existing data to copy from)
@@ -63,6 +66,12 @@ public class UserData {
 
 		JsonNode userExtension = userData.get(EXTENSION);
 		if (userExtension != null) {
+			// everything directly under the extension, except customProperties itself
+			userExtension.fields().forEachRemaining(entry -> {
+				if (!"customProperties".equals(entry.getKey())) {
+					d.extensionAttributes.put(entry.getKey(), entry.getValue().asText());
+				}
+			});
 			d.loadCustomPropertiesFrom(userExtension);
 		}
 
@@ -82,7 +91,7 @@ public class UserData {
 		}
 	}
 
-	// Set (or overwrite) a single customProperties attribute, by name
+	// Set (or overwrite) a single customProperties attribute, by name (e.g. "locationCode")
 	public void setCustomProperty(String key, Object value) {
 		customProperties.put(key, value);
 	}
@@ -91,8 +100,19 @@ public class UserData {
 		return customProperties.get(key);
 	}
 
-	// Captures every current attribute (including all customProperties) as a flat, ordered map,
-	// used for the Before/After snapshot comparison in ApiValidation.logAttributeChanges(...)
+	// Set (or overwrite) a single top-level extension attribute, by name
+	// (e.g. "employmentStatus", "workLocation", "userType")
+	public void setExtensionAttribute(String key, Object value) {
+		extensionAttributes.put(key, value);
+	}
+
+	public Object getExtensionAttribute(String key) {
+		return extensionAttributes.get(key);
+	}
+
+	// Captures every current attribute (top-level fields, extensionAttributes, customProperties)
+	// as a flat, ordered map, used for the Before/After snapshot comparison in
+	// ApiValidation.logAttributeChanges(...)
 	public Map<String, String> snapshot() {
 		Map<String, String> map = new LinkedHashMap<>();
 		map.put("id", id);
@@ -103,14 +123,18 @@ public class UserData {
 		map.put("name.givenName", givenName);
 		map.put("name.familyName", familyName);
 		map.put("name.middleName", middleName);
-		for (Map.Entry<String, Object> entry : customProperties.entrySet()) {
+		for (Map.Entry<String, Object> entry : extensionAttributes.entrySet()) {
 			map.put("extension." + entry.getKey(),
+					entry.getValue() == null ? null : String.valueOf(entry.getValue()));
+		}
+		for (Map.Entry<String, Object> entry : customProperties.entrySet()) {
+			map.put("extension.customProperties." + entry.getKey(),
 					entry.getValue() == null ? null : String.valueOf(entry.getValue()));
 		}
 		return map;
 	}
 
-	// builds the SCIM payload; null fields are left out
+	// builds the SCIM payload; null fields (and null map values) are left out
 	public ObjectNode toPayload() {
 		ObjectNode root = MAPPER.createObjectNode();
 		if (active != null) root.put("active", active);
@@ -131,10 +155,16 @@ public class UserData {
 		put(name, "middleName", middleName);
 		if (name.size() > 0) root.set("name", name);
 
-		if (!customProperties.isEmpty()) {
-			ObjectNode cp = root.putObject(EXTENSION).putObject("customProperties");
-			for (Map.Entry<String, Object> entry : customProperties.entrySet()) {
-				cp.put(entry.getKey(), String.valueOf(entry.getValue()));
+		if (!extensionAttributes.isEmpty() || !customProperties.isEmpty()) {
+			ObjectNode ext = root.putObject(EXTENSION);
+			for (Map.Entry<String, Object> entry : extensionAttributes.entrySet()) {
+				if (entry.getValue() != null) ext.put(entry.getKey(), String.valueOf(entry.getValue()));
+			}
+			if (!customProperties.isEmpty()) {
+				ObjectNode cp = ext.putObject("customProperties");
+				for (Map.Entry<String, Object> entry : customProperties.entrySet()) {
+					if (entry.getValue() != null) cp.put(entry.getKey(), String.valueOf(entry.getValue()));
+				}
 			}
 		}
 		return root;

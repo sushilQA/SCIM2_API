@@ -17,7 +17,7 @@ public class GenerateAccessToken {
 
 	UserOAuth login = new UserOAuth();
 
-	@Test(enabled = true, priority = 1)
+	@Test(enabled = true, priority = 1, groups = {"auth", "positive"})
 	public void generateAccessTokenWithValidCredentials() throws IOException, InterruptedException, BiffException {
 		ExtentReports extentReports = GenerateExtentReports.generateExtentReport();
 		ExtentTest extentTest = extentReports.createTest("User OAuth With Valid Credentials");
@@ -32,7 +32,7 @@ public class GenerateAccessToken {
 		}
 	}
 
-	@Test(enabled = true, priority = 2)
+	@Test(enabled = true, priority = 2, groups = {"auth", "negative"})
 	public void generateAccessTokenWithInvalidUserName() throws IOException, InterruptedException, BiffException {
 		ExtentReports extentReports = GenerateExtentReports.generateExtentReport();
 		ExtentTest extentTest = extentReports.createTest("User OAuth With Invalid Username");
@@ -47,7 +47,7 @@ public class GenerateAccessToken {
 		}
 	}
 
-	@Test(enabled = true, priority = 3)
+	@Test(enabled = true, priority = 3, groups = {"auth", "negative"})
 	public void generateAccessTokenWithInvalidPassword() throws IOException, InterruptedException, BiffException {
 		ExtentReports extentReports = GenerateExtentReports.generateExtentReport();
 		ExtentTest extentTest = extentReports.createTest("User OAuth With Invalid Password");

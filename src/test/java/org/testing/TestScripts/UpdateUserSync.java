@@ -17,7 +17,7 @@ public class UpdateUserSync {
 
 	Update_User_Sync updateUserSync = new Update_User_Sync();
 
-	@Test(enabled = true, priority = 15)
+	@Test(enabled = true, priority = 15, groups = {"updateUser", "positive"})
 	public void updateUserSyncModify() throws IOException, InterruptedException, BiffException {
 		ExtentReports extentReports = GenerateExtentReports.generateExtentReport();
 		ExtentTest extentTest = extentReports.createTest("Update User Sync - Modify");
@@ -30,8 +30,8 @@ public class UpdateUserSync {
 			throw e;
 		}
 	}
-	
-	@Test(enabled = true, priority = 16)
+
+	@Test(enabled = true, priority = 16, groups = {"updateUser", "negative"})
 	public void updateUserSyncUserNotExist() throws IOException, InterruptedException, BiffException {
 		ExtentReports extentReports = GenerateExtentReports.generateExtentReport();
 		ExtentTest extentTest = extentReports.createTest("Update User - Negative - User Not Exist");
@@ -44,7 +44,5 @@ public class UpdateUserSync {
 			throw e;
 		}
 	}
-	
-
 
 }
